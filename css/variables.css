@@ -1,0 +1,36 @@
+:root {
+    --font-family: 'Inter', sans-serif;
+    --second-family: 'Roboto', sans-serif;
+    --third-family: 'Rubik', sans-serif;
+    --fourth-family: 'Open Sans', sans-serif;
+
+    --primary-blue: #f6f7fb;
+    --primary-blue-10: rgba(246, 247, 251, 0.1);
+    --primary-blue-07: rgba(246, 247, 251, 0.07);
+    --secondary-blue: #eef0f7;
+
+    --base-white: #fff;
+    --base-red: #f50000;
+    --base-gray: #d9d9d9;
+    --base-green: #2faa5c;
+
+    --primary-color: rgba(25, 26, 81, 0.8);
+    --primary-solid: #191a51;
+    --primary-solid-30: rgba(25, 26, 81, 0.3);
+
+    --secondary-color: rgba(25, 26, 81, 0.6);
+    --secondary-solid: #2b4294;
+
+    --opacity-white-80: rgba(255, 255, 255, 0.8);
+    --opacity-white-70: rgba(255, 255, 255, 0.8);
+    --opacity-white-60: rgba(255, 255, 255, 0.6);
+    --opacity-white-30: rgba(255, 255, 255, 0.3);
+
+    --primary-border-color: rgba(25, 26, 81, 0.15);
+    --secondary-border-color: rgba(25, 26, 81, 0.2);
+    --white-border-color: rgba(255, 255, 255, 0.15);
+
+    --swiper-disabled: #f2f4f7;
+    --swiper-bullet: #e0e1ea;
+    --swiper-bullet-20:rgb(224, 225, 234, 0.2);
+}
