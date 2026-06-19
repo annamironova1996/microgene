@@ -55,6 +55,13 @@ $fluid-max-width: 1840px !default;
             }
         }
     }
+    .header-brand__logos {
+        a {
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
 
     // footer
     .footer-top__contacts {
@@ -144,23 +151,22 @@ $fluid-max-width: 1840px !default;
 .header-inner {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-end;
     padding-left: fluid(10px, 20px);
     padding-right: fluid(10px, 20px);
 }
 .header-brand {
     display: flex;
     align-items: center;
-    gap: fluid(10px, 14px);
-    max-width: 491px;
+    gap: fluid(10px, 18px);
     color: var(--secondary-color);
 }
 .header-brand__logo {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: fluid(153px, 200px);
-    height: fluid(26px, 34px);
+    width: fluid(153px, 188px);
+    height: fluid(26px, 32px);
     flex-shrink: 0;
 
     img {
@@ -169,14 +175,24 @@ $fluid-max-width: 1840px !default;
         object-fit: cover;
     }
 }
-.header-brand__description {
+.header-brand__logos {
     border-left: 1px solid var(--secondary-border-color);
-    padding-left: 13px;
-    font-size: 12px;
-    line-height: 133%;
-    letter-spacing: 0rem;
+    padding-left: 19px;
+    display: flex;
+    align-items: center;
+    gap: fluid(10px, 20px);
+
+    a {
+        opacity: 0.8;
+        transition: opacity 0.2s ease;
+
+        &:active {
+            opacity: 1;
+        }
+    }
 }
 .header-nav {
+    margin-left: fluid(0px, 38px);
     & > ul {
         display: flex;
         align-items: center;
@@ -237,6 +253,7 @@ $fluid-max-width: 1840px !default;
     display: flex;
     align-items: center;
     gap: fluid(12px, 24px);
+    margin-left: auto;
 }
 .header-search {
     position: relative;
@@ -840,9 +857,16 @@ $fluid-max-width: 1840px !default;
     }
 }
 
+@media screen and (max-width: 1700px) and (min-width: 1651px) {
+    // header
+    .header-nav > ul {
+        gap: 0;
+    }
+}
+
 @media screen and (max-width: 1650px) {
     // header
-    .header-brand__description {
+    .header-brand__logos {
         display: none;
     }
 }

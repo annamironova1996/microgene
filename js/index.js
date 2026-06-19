@@ -283,6 +283,14 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!mobileMenu.hasAttribute('hidden')) {
                 mobileMenu.setAttribute('hidden', true);
             }
+
+            if (body.classList.contains('no-scroll')) {
+                body.classList.remove('no-scroll');
+            }
+
+            if (html.classList.contains('no-scroll')) {
+                html.classList.remove('no-scroll');
+            }
         }
     }
 

@@ -284,6 +284,7 @@ html {
     display: flex;
     flex-direction: column;
     gap: fluid(16px, 22px);
+    width: 100%;
 }
 .title-container {
     display: flex;
@@ -295,6 +296,13 @@ html {
 
     &:has(.title-container__text) {
         align-items: flex-start;
+    }
+
+    &.title-container--text-bottom {
+        .title-container__text {
+            margin-top: auto;
+            max-width: 560px;
+        }
     }
 }
 .title-container__text {
@@ -329,7 +337,7 @@ html {
 
 .title-1 {
     font-weight: 600;
-    font-size: fluid(34px, 58px);
+    font-size: fluid(32px, 58px);
     line-height: 118%;
     letter-spacing: -0.03em;
     text-transform: uppercase;
@@ -343,14 +351,6 @@ html {
     text-transform: uppercase;
     color: var(--secondary-solid);
     max-width: 910px;
-
-    &[lang='ru'] {
-        hyphens: auto;
-        -webkit-hyphens: auto;
-        -moz-hyphens: auto;
-        overflow-wrap: break-word;
-        word-break: break-word;
-    }
 }
 
 .content-inner {
@@ -813,7 +813,7 @@ html {
     width: 100%;
 }
 .swiper-slide {
-    max-width: max-content !important;
+    max-width: 100% !important;
 }
 .swiper-bullet__items {
     display: grid;
@@ -863,7 +863,7 @@ html {
         background-repeat: no-repeat;
 
         & > * {
-            max-width: 755px;
+            max-width: 780px;
         }
     }
 }
@@ -871,8 +871,8 @@ html {
     margin-top: auto;
 }
 .banner-inner__content {
-    font-size: fluid(15px, 18px);
-    line-height: 133%;
+    font-size: fluid(15px, 20px);
+    line-height: 130%;
     color: var(--primary-solid);
 }
 
@@ -880,7 +880,7 @@ html {
 .statistic-item {
     max-width: fluid(280px, 600px);
     overflow: hidden;
-    min-height: fluid(410px, 470px);
+    min-height: fluid(390px, 470px);
     display: flex;
     flex-direction: column;
 
@@ -977,7 +977,7 @@ html {
 }
 .statistic-item__num {
     font-weight: 600;
-    font-size: fluid(34px, 56px);
+    font-size: fluid(32px, 56px);
     line-height: 121%;
     letter-spacing: -0.02em;
 }
@@ -1426,6 +1426,14 @@ html {
     .swiper {
         overflow: visible !important;
     }
+    .swiper-slide {
+        max-width: max-content !important;
+    }
+
+    .statistic-item {
+        width: fluid(280px, 600px);
+        max-width: 100%;
+    }
 }
 
 @media screen and (max-width: 1024px) {
@@ -1462,7 +1470,14 @@ html {
     //base
     body,
     html {
-        line-height: 143%;
+        line-height: 143% !important;
+    }
+    *[lang='ru'] {
+        hyphens: auto;
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        overflow-wrap: break-word;
+        word-break: break-word;
     }
     .badge-title {
         line-height: 133%;
@@ -1507,7 +1522,7 @@ html {
         line-height: 119%;
     }
     .statistic-item__num {
-        line-height: 129%;
+        line-height: 131%;
     }
     .statistic-item__content {
         letter-spacing: -0.01em;
@@ -1574,8 +1589,8 @@ html {
         }
     }
     .title-1 {
-        line-height: 129%;
-        letter-spacing: -0.05rem;
+        line-height: 131%;
+        letter-spacing: -0.02em;
     }
 
     // banner
