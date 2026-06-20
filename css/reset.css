@@ -101,6 +101,12 @@ footer a {
     color: inherit;
 }
 
+main b,
+header b,
+footer b {
+    font-weight: 500;
+}
+
 main ul,
 main ol,
 header ul,
