@@ -269,6 +269,34 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     initSwiperTablet();
 
+    // Слайдер на экранах <= 1045
+    const grid_swipers = document.querySelectorAll('.grid-swiper');
+    let gridSwipersInstances = [];
+
+    function initSwiperGridSwiper() {
+        const isTablet = window.innerWidth <= 1045;
+
+        if (isTablet && grid_swipers.length > 0) {
+            if (gridSwipersInstances.length === 0) {
+                grid_swipers.forEach((swiper) => {
+                    gridSwipersInstances.push(
+                        new Swiper(swiper, {
+                            slidesPerView: 'auto',
+                            spaceBetween: 14,
+                        })
+                    );
+                });
+            }
+        } else if (!isTablet && gridSwipersInstances.length > 0) {
+            gridSwipersInstances.forEach((instance) => {
+                instance.destroy(true, true);
+            });
+            gridSwipersInstances = [];
+        }
+    }
+
+    initSwiperGridSwiper();
+
     // Мобильное меню
     const headerMobileButton = document.querySelector('.header-mobile__button');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -375,6 +403,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Мобильное меню
             mobileMenuHiddenOnDesktop();
+
+            // Слайдер на экранах <= 1045
+            initSwiperGridSwiper();
         }, 0);
     });
 });

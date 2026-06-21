@@ -22,9 +22,10 @@
     --secondary-solid: #2b4294;
 
     --opacity-white-80: rgba(255, 255, 255, 0.8);
-    --opacity-white-70: rgba(255, 255, 255, 0.8);
+    --opacity-white-70: rgba(255, 255, 255, 0.7);
     --opacity-white-60: rgba(255, 255, 255, 0.6);
     --opacity-white-30: rgba(255, 255, 255, 0.3);
+
 
     --primary-border-color: rgba(25, 26, 81, 0.15);
     --secondary-border-color: rgba(25, 26, 81, 0.2);
@@ -32,5 +33,5 @@
 
     --swiper-disabled: #f2f4f7;
     --swiper-bullet: #e0e1ea;
-    --swiper-bullet-20:rgb(224, 225, 234, 0.2);
+    --swiper-bullet-20: rgb(224, 225, 234, 0.2);
 }
