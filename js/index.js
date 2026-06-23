@@ -354,6 +354,51 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Открытие / закрытие модального окна
+    const dataOpenModal = document.querySelectorAll('[data-open-modal]');
+    const dataCloseModal = document.querySelectorAll('[data-close-modal]');
+
+    if (dataOpenModal && dataCloseModal) {
+        dataOpenModal.forEach((element) => {
+            element.addEventListener('click', function () {
+                const attr = element.getAttribute('data-open-modal');
+                const modal = document.querySelector(`[data-modal="${attr}"]`);
+                if (modal) {
+                    html.classList.add('no-scroll');
+                    body.classList.add('no-scroll');
+                    modal.removeAttribute('hidden');
+                    setTimeout(() => {
+                        modal.classList.add('active');
+                    }, 0);
+                }
+            });
+        });
+
+        dataCloseModal.forEach((element) => {
+            element.addEventListener('click', function (e) {
+                const modal = e.target.closest('.modal');
+                closeModal(modal);
+            });
+        });
+
+        document.addEventListener('click', function (e) {
+            const modal = e.target.closest('.modal');
+            if (modal && e.target === modal) {
+                closeModal(modal);
+            }
+        });
+    }
+
+    function closeModal(modal) {
+        if (!modal) return;
+        html.classList.remove('no-scroll');
+        body.classList.remove('no-scroll');
+        modal.classList.remove('active');
+        setTimeout(() => {
+            modal.setAttribute('hidden', true);
+        }, 100);
+    }
+
     // Мобильное меню
     const headerMobileButton = document.querySelector('.header-mobile__button');
     const mobileMenu = document.getElementById('mobile-menu');
