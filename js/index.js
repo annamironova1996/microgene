@@ -297,6 +297,63 @@ document.addEventListener('DOMContentLoaded', function () {
 
     initSwiperGridSwiper();
 
+    // Слайдер изображений на странице товара
+    const simpleProductImagesSwiper = document.querySelectorAll('.simple-product__images-swiper .swiper');
+    if (simpleProductImagesSwiper) {
+        simpleProductImagesSwiper.forEach((swiper) => {
+            const parent = swiper.closest('section');
+            const previousButton = parent.querySelector('.simple-product__images-button--prev') || null;
+            const nextButton = parent.querySelector('.simple-product__images-button--next') || null;
+
+            new Swiper(swiper, {
+                slidesPerView: 'auto',
+                spaceBetween: 14,
+                direction: 'horizontal',
+                navigation: {
+                    nextEl: nextButton,
+                    prevEl: previousButton,
+                },
+                breakpoints: {
+                    992: {
+                        slidesPerView: 4,
+                        spaceBetween: 10,
+                        direction: 'vertical',
+                    },
+                },
+            });
+        });
+    }
+
+    // Изображение слайдера на странице товара
+    const simpleProductImages = document.querySelector('.simple-product__images');
+    if (simpleProductImages) {
+        simpleProductImages.addEventListener('click', function (e) {
+            const item = e.target.closest('.simple-product__images-item');
+            if (!item) return;
+
+            if (window.innerWidth >= 991) {
+                const src = item.querySelector('img').getAttribute('src');
+                const previewImage = document.querySelector('.simple-product__images-preview img');
+
+                if (!previewImage) return;
+
+                const currentSrc = previewImage.getAttribute('src');
+
+                this.querySelectorAll('.simple-product__images-item').forEach((el) => {
+                    el.classList.remove('active');
+                });
+
+                if (src === currentSrc) {
+                    item.classList.add('active');
+                    return;
+                }
+
+                previewImage.setAttribute('src', src);
+                item.classList.add('active');
+            }
+        });
+    }
+
     // Мобильное меню
     const headerMobileButton = document.querySelector('.header-mobile__button');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -377,6 +434,37 @@ document.addEventListener('DOMContentLoaded', function () {
                     mobileMainMenu.removeAttribute('hidden');
                 }
             }
+        });
+    }
+
+    // переключатель toggle
+    const dataToggleParents = document.querySelectorAll('[data-toggle-parent]');
+    if (dataToggleParents) {
+        dataToggleParents.forEach((element) => {
+            element.addEventListener('click', function (e) {
+                if (e.target.closest('[data-toggle-button]')) {
+                    const content = e.target.closest('[data-toggle-content]');
+                    const body = content.querySelector('[data-toggle-hidden]');
+                    if (content && body) {
+                        if (content.classList.contains('active')) {
+                            body.style.maxHeight = '0';
+                            body.style.opacity = '0';
+                            setTimeout(() => {
+                                body.setAttribute('hidden', true);
+                            }, 300);
+                            content.classList.remove('active');
+                        } else {
+                            body.removeAttribute('hidden');
+
+                            requestAnimationFrame(() => {
+                                body.style.maxHeight = body.scrollHeight + 'px';
+                                body.style.opacity = '1';
+                            });
+                            content.classList.add('active');
+                        }
+                    }
+                }
+            });
         });
     }
 
