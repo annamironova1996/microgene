@@ -347,6 +347,11 @@ html {
     grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
     gap: fluid(6px, 8px);
 }
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: fluid(14px, 20px);
+}
 
 .title-row {
     display: flex;
@@ -1460,6 +1465,19 @@ html {
 // geography-items
 .geography-items {
     margin-top: fluid(28px, 30px);
+
+    .geography-item {
+        background-color: var(--base-white);
+        max-width: fluid(280px, 445px);
+        min-height: fluid(480px, 560px);
+    }
+    .geography-item__image {
+        height: fluid(160px, 210px);
+    }
+    .geography-item__info {
+        padding-left: fluid(4px, 8px);
+        padding-right: fluid(4px, 8px);
+    }
 }
 @media screen and (min-width: 1024px) {
     .geography-items {
@@ -1521,12 +1539,22 @@ html {
         }
     }
 }
+.geography-grid {
+    .geography-item {
+        background-color: var(--primary-blue);
+        max-width: 100%;
+        min-height: fluid(464px, 560px);
+    }
+    .geography-item__image {
+        height: fluid(180px, 210px);
+    }
+    .geography-item__info {
+        padding-left: fluid(0px, 8px);
+        padding-right: fluid(0px, 8px);
+    }
+}
 .geography-item {
-    max-width: fluid(280px, 445px);
-    background: var(--base-white);
-    min-height: fluid(480px, 560px);
     border-radius: fluid(8px, 14px);
-    background-color: var(--base-white);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -1536,7 +1564,7 @@ html {
     position: relative;
     border-radius: fluid(6px, 10px);
     width: 100%;
-    height: fluid(160px, 210px);
+
     flex-shrink: 0;
 
     img {
@@ -1551,8 +1579,7 @@ html {
     display: flex;
     flex-direction: column;
     flex: 1;
-    padding-left: fluid(4px, 8px);
-    padding-right: fluid(4px, 8px);
+
     padding-bottom: fluid(4px, 8px);
 }
 .geography-item__content {
@@ -2947,6 +2974,9 @@ main {
         background: none;
         background-size: cover;
     }
+    .grid-4 {
+        grid-template-columns: 100%;
+    }
 
     // banner
     .banner-inner__content {
@@ -2975,11 +3005,19 @@ main {
         padding-bottom: fluid(306px, 600px);
     }
 
+    // offer
     .offer {
         .base-button {
             span {
                 min-width: auto;
             }
+        }
+    }
+
+    // geography-item
+    .geography-grid {
+        .geography-item__content {
+            -webkit-line-clamp: 4;
         }
     }
 }
