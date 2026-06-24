@@ -828,6 +828,7 @@ html {
 .slider-buttons {
     display: flex;
     align-items: center;
+    margin-left: auto;
 
     &.slider-buttons--darkblue,
     &.slider-buttons--lightblue {
@@ -1753,6 +1754,10 @@ main {
     > .breadcrumbs:first-child {
         padding-top: fluid(15px, 11px);
     }
+
+    > .light-blue-section:last-child {
+        margin-bottom: fluid(70px, 140px);
+    }
 }
 .breadcrumbs {
     padding-top: fluid(20px, 29px);
@@ -1828,11 +1833,21 @@ main {
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: fluid(28px, 38px);
+
+    &.block-info--small {
+        max-width: fluid(240px, 445px);
+        min-height: fluid(300px, 262px);
+        gap: fluid(28px, 62px);
+
+        .block-info__header {
+            min-height: 56px;
+        }
+    }
 
     &.block-info--medium {
         max-width: fluid(240px, 445px);
         min-height: fluid(340px, 290px);
+        gap: fluid(28px, 38px);
 
         .block-info__header {
             min-height: 84px;
@@ -2567,6 +2582,9 @@ main {
     .swiper-slide {
         max-width: max-content !important;
     }
+    .slider-buttons {
+        display: none;
+    }
 
     // statistic-item
     .statistic-item {
@@ -2614,11 +2632,6 @@ main {
 }
 
 @media screen and (max-width: 991px) {
-    //base
-    .slider-buttons {
-        display: none;
-    }
-
     // breadcrumbs
     .breadcrumbs-nav {
         display: none;
