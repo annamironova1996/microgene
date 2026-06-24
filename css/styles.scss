@@ -2355,21 +2355,21 @@ main {
         background: var(--secondary-solid);
         color: var(--base-white);
     }
+
     .choices[data-type*='select-one'] .choices__inner {
         padding-top: fluid(14px, 21px);
         padding-bottom: fluid(14px, 21px);
         padding-left: fluid(15px, 19px);
         padding-right: fluid(35px, 41px);
     }
-    .page-form__inner .choices__list--single {
-        font-weight: 400;
+    .choices__list--single,
+    .choices__list--single .choices__item {
         font-size: fluid(14px, 16px);
         line-height: 138%;
     }
     .choices__placeholder {
         opacity: 1;
         color: var(--primary-solid-50);
-        font-weight: 400;
         font-size: fluid(14px, 16px);
         line-height: 138%;
         letter-spacing: 0;
@@ -2868,6 +2868,10 @@ main {
             line-height: 143%;
         }
         .choices__placeholder {
+            line-height: 143%;
+        }
+        .choices__list--single,
+        .choices__list--single .choices__item {
             line-height: 143%;
         }
     }
