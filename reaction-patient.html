@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <title>Форма обратной связи для специалиста здравоохранения</title>
+        <title>Форма обратной связи для пациента/иного лица</title>
         <link rel="stylesheet" href="./css/fonts.css" />
         <link rel="stylesheet" href="./css/reset.css" />
         <link rel="stylesheet" href="./css/variables.css" />
@@ -291,7 +291,7 @@
                             <li><a href="./products.html">Продукция</a></li>
                             <li><a href="./drug-safety.html">Безопасность препаратов</a></li>
                             <li>
-                                <span>Форма обратной связи для специалиста здравоохранения</span>
+                                <span>Форма обратной связи для пациента/иного лица</span>
                             </li>
                         </ul>
                     </nav>
@@ -299,33 +299,37 @@
                 </div>
             </section>
 
-            <!-- Форма обратной связи для специалиста здравоохранения -->
+            <!-- Форма обратной связи для пациента/иного лица -->
             <section class="top-section">
                 <div class="container">
-                    <h1 class="title-1">Форма обратной связи для специалиста здравоохранения</h1>
+                    <h1 class="title-1">
+                        Форма обратной связи для<br />
+                        пациента/иного лица
+                    </h1>
                     <form class="page-form">
                         <div class="page-form__wrapper">
-                            <h2 class="title-4 page-form__title">Лицо, сообщающее о нежелательной реакции (НР)</h2>
                             <div class="page-form__rows">
                                 <div class="page-form__grid-2">
                                     <div class="page-form__inner">
                                         <label for="name">Ваше имя*</label>
                                         <input type="text" id="name" name="name" placeholder="Укажите ваше Имя" required autocomplete="off" />
                                         <!-- выводить, если есть ошибка -->
-                                        <span class="page-form__error">Текст ошибки</span>
+                                        <!-- <span class="page-form__error">Текст ошибки</span> -->
                                     </div>
                                     <div class="page-form__inner">
                                         <label for="position">Кем вы являетесь?*</label>
-                                        <input type="text" id="position" name="position" placeholder="Например, врач, медицинская сестра, провизор и т.д" required autocomplete="off" />
+                                        <select name="position" id="position" data-select required>
+                                            <!-- пустой option, чтобы работал select required  -->
+                                            <option value="" disabled>Выберите из списка</option>
+                                            <option value="Пациент 1">Пациент 1</option>
+                                            <option value="Пациент 2">Пациент 2</option>
+                                            <option value="Пациент 3">Пациент 3</option>
+                                        </select>
                                         <!-- выводить, если есть ошибка -->
-                                        <span class="page-form__error">Текст ошибки</span>
+                                        <!-- <span class="page-form__error">Текст ошибки</span> -->
                                     </div>
                                 </div>
                                 <div class="page-form__grid-2">
-                                    <div class="page-form__inner">
-                                        <label for="address">Населенный пункт</label>
-                                        <input type="text" id="address" name="address" placeholder="Укажите населенный пункт" required autocomplete="off" />
-                                    </div>
                                     <div class="page-form__inner">
                                         <label for="connection">Выберите предпочтительный способ связи*</label>
                                         <select name="connection" id="connection" data-select required>
@@ -336,123 +340,29 @@
                                             <option value="Способ 3">Способ 1</option>
                                         </select>
                                         <!-- выводить, если есть ошибка -->
-                                        <span class="page-form__error">Текст ошибки</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="page-form__wrapper">
-                            <h2 class="title-4 page-form__title">Информация о пациенте</h2>
-                            <div class="page-form__rows">
-                                <div class="page-form__grid-3">
-                                    <div class="page-form__inner">
-                                        <label for="patient_name">Инициалы*</label>
-                                        <input type="text" id="patient_name" name="patient_name" placeholder="Укажите Инициалы пациента" required autocomplete="off" />
-                                        <!-- выводить, если есть ошибка -->
-                                        <span class="page-form__error">Текст ошибки</span>
+                                        <!-- <span class="page-form__error">Текст ошибки</span> -->
                                     </div>
                                     <div class="page-form__inner">
-                                        <label for="patient_gender">Пол</label>
-                                        <select name="patient_gender" id="patient_gender" data-select>
-                                            <option value="Пол 1">Пол 1</option>
-                                            <option value="Пол 2">Пол 2</option>
-                                        </select>
-                                    </div>
-                                    <div class="page-form__inner">
-                                        <label for="patient_age">Возраст</label>
-                                        <input type="number" id="patient_age" name="patient_age" placeholder="Укажите возраст пациента" autocomplete="off" data-age-input />
+                                        <label for="address">Населенный пункт</label>
+                                        <input type="text" id="address" name="address" placeholder="Укажите населенный пункт" required autocomplete="off" />
                                     </div>
                                 </div>
                                 <div class="page-form__inner">
-                                    <label for="patient_diseases">Сопутствующие заболевания</label>
-                                    <textarea id="patient_diseases" name="patient_diseases" placeholder="Перечислите известные вам заболевания пациента"></textarea>
+                                    <label for="drug_name">Название препарата*</label>
+                                    <input type="text" id="drug_name" name="drug_name" placeholder="Укажите название препарата" required autocomplete="off" />
+                                    <!-- выводить, если есть ошибка -->
+                                    <!-- <span class="page-form__error">Текст ошибки</span> -->
                                 </div>
                                 <div class="page-form__grid-2">
-                                    <div class="page-form__inner">
-                                        <label for="patient_allergy">Аллергия</label>
-                                        <select name="patient_allergy" id="patient_allergy" data-select>
-                                            <option value="Аллергия 1">Аллергия 1</option>
-                                            <option value="Аллергия 2">Аллергия 2</option>
-                                            <option value="Аллергия 3">Аллергия 3</option>
-                                            <option value="Аллергия 4">Аллергия 4</option>
-                                            <option value="Аллергия 5">Аллергия 5</option>
-                                            <option value="Аллергия 6">Аллергия 6</option>
-                                            <option value="Аллергия 7">Аллергия 7</option>
-                                            <option value="Аллергия 8">Аллергия 8</option>
-                                            <option value="Аллергия 9">Аллергия 9</option>
-                                            <option value="Аллергия 10">Аллергия 10</option>
-                                            <option value="Аллергия 11">Аллергия 11</option>
-                                            <option value="Аллергия 12">Аллергия 12</option>
-                                            <option value="Аллергия 13">Аллергия 13</option>
-                                            <option value="Аллергия 14">Аллергия 14</option>
-                                            <option value="Аллергия 15">Аллергия 15</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="page-form__inner">
-                                    <label for="patient_drugs">Препараты, принимаемые в течение последних 3 месяцев</label>
-                                    <textarea id="patient_drugs" name="patient_drugs" placeholder="Перечислите в строчку через запятую препараты"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="page-form__wrapper">
-                            <h2 class="title-4 page-form__title">Информация о лекарственном препарате, вызвавшем НР</h2>
-                            <div class="page-form__rows">
-                                <div class="page-form__grid-2">
-                                    <div class="page-form__inner">
-                                        <label for="drug_name">Название препарата*</label>
-                                        <input type="text" id="drug_name" name="drug_name" placeholder="Укажите название препарата" required autocomplete="off" />
-                                        <!-- выводить, если есть ошибка -->
-                                        <span class="page-form__error">Текст ошибки</span>
-                                    </div>
                                     <div class="page-form__inner">
                                         <label for="drug_series">Номер серии</label>
-                                        <input type="text" id="drug_series" name="drug_series" placeholder="Укажите Номер серии" autocomplete="off" />
+                                        <input type="text" id="drug_series" name="drug_series" placeholder="Укажите номер серии" autocomplete="off" />
                                     </div>
                                 </div>
-                                <div class="page-form__inner">
-                                    <label for="drug_indication">Показание для приема</label>
-                                    <textarea id="drug_indication" name="drug_indication" placeholder="Перечислите показание для приема"></textarea>
-                                </div>
-                                <div class="page-form__grid-2">
-                                    <div class="page-form__inner">
-                                        <label for="drug_details">Путь введения, доза</label>
-                                        <textarea id="drug_details" name="drug_details" placeholder="Укажите путь введения, доза"></textarea>
-                                    </div>
-                                    <div class="page-form__inner">
-                                        <label for="drug_details">Дата применения</label>
-                                        <input type="text" id="drug_details" name="drug_details" placeholder="дд/мм/гг" autocomplete="off" data-date-input />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="page-form__wrapper">
-                            <h2 class="title-4 page-form__title">Описание НР</h2>
-                            <div class="page-form__rows">
-                                <div class="page-form__inner">
-                                    <label for="reaction_symptom">Симптомы НР*</label>
-                                    <textarea name="reaction_symptom" id="reaction_symptom" placeholder="Перечислите симптомы НР" required></textarea>
-                                    <!-- выводить, если есть ошибка -->
-                                    <span class="page-form__error">Текст ошибки</span>
-                                </div>
-                                <div class="page-form__grid-2">
-                                    <div class="page-form__inner">
-                                        <label for="reaction_to">Дата начала НР</label>
-                                        <input type="text" id="reaction_to" name="reaction_to" placeholder="дд/мм/гг" autocomplete="off" data-date-input />
-                                    </div>
-                                    <div class="page-form__inner">
-                                        <label for="reaction_from">Дата окончания НР</label>
-                                        <input type="text" id="reaction_from" name="reaction_from" placeholder="дд/мм/гг" autocomplete="off" data-date-input />
-                                    </div>
-                                </div>
-                                <div class="page-form__grid-2">
-                                    <div class="page-form__inner">
-                                        <label for="patient_outcome">Исход НР</label>
-                                        <select name="patient_outcome" id="patient_outcome" data-select>
-                                            <option value="Исход НР 1">Исход НР 1</option>
-                                            <option value="Исход НР 2">Исход НР 2</option>
-                                        </select>
-                                    </div>
+                                <!-- этот класс page-form__inner--textarea если у textarea нужна большая высота как на комп, так и на мобильной версии -->
+                                <div class="page-form__inner page-form__inner--textarea">
+                                    <label for="message">Сообщение</label>
+                                    <textarea id="message" name="message" placeholder="Здесь вы можете указать все самое важное"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -479,11 +389,11 @@
                                 ><p>Нажимая на кнопку я подтверждаю, что ознакомлен с <a href="privacy-policy.html">Политикой по обработке персональных данных</a> и даю <a href="privacy.html">Согласие на обработку персональных данных</a></p></label
                             >
                             <!-- выводить, если есть ошибка -->
-                            <span class="page-form__error">Текст ошибки</span>
+                            <!-- <span class="page-form__error">Текст ошибки</span> -->
                         </div>
                         <!-- класс base-button--disabled делает кнопку неактивной  -->
                         <!-- кнопка становится неактивной в случае ошибок при валидации -->
-                        <button type="submit" class="base-button base-button--blue base-button--disabled"><span>Отправить форму</span></button>
+                        <button type="submit" class="base-button base-button--blue"><span>Отправить форму</span></button>
                     </form>
                 </div>
             </section>

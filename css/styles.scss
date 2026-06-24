@@ -2306,6 +2306,11 @@ main {
     textarea {
         resize: none;
     }
+    &.page-form__inner--textarea {
+        textarea {
+            height: fluid(96px, 128px);
+        }
+    }
     .choices {
         margin-bottom: 0;
         border-radius: 8px;
@@ -2318,7 +2323,7 @@ main {
         padding: 0;
     }
     .choices__inner {
-        height: fluid(46px, 64px);
+        height: fluid(48px, 64px);
         border: none;
         background: var(--base-white);
         border-radius: 8px;
@@ -2351,8 +2356,8 @@ main {
         color: var(--base-white);
     }
     .choices[data-type*='select-one'] .choices__inner {
-        padding-top: fluid(13px, 21px);
-        padding-bottom: fluid(13px, 21px);
+        padding-top: fluid(14px, 21px);
+        padding-bottom: fluid(14px, 21px);
         padding-left: fluid(15px, 19px);
         padding-right: fluid(35px, 41px);
     }
