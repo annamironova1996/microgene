@@ -13,10 +13,12 @@
     --base-red: #f50000;
     --base-gray: #d9d9d9;
     --base-green: #2faa5c;
+    --base-black: #000;
 
     --primary-color: rgba(25, 26, 81, 0.8);
     --primary-solid: #191a51;
     --primary-solid-70: rgba(25, 26, 81, 0.7);
+    --primary-solid-50: rgba(25, 26, 81, 0.5);
     --primary-solid-30: rgba(25, 26, 81, 0.3);
 
     --secondary-color: rgba(25, 26, 81, 0.6);
@@ -34,4 +36,7 @@
     --swiper-disabled: #f2f4f7;
     --swiper-bullet: #e0e1ea;
     --swiper-bullet-20: rgb(224, 225, 234, 0.2);
+
+    --button-disabled-bg: #eef0f5;
+    --button-disabled-color: #cbd5e1;
 }

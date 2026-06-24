@@ -16,19 +16,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 shouldSort: false,
             });
 
-            // Сохраняем URL для каждого option
             const options = selectElement.options;
             const urls = {};
             for (let i = 0; i < options.length; i++) {
                 urls[options[i].value] = options[i].getAttribute('data-url');
             }
 
-            // Обработчик изменения
             selectElement.addEventListener('change', function (e) {
                 const url = urls[this.value];
                 if (url && url !== '#!') {
                     window.location.href = url;
                 }
+            });
+        }
+
+        // Кастомный селект для инпутов в форме
+        if (selectElement.closest('.page-form__inner select')) {
+            new Choices(selectElement, {
+                searchEnabled: false,
+                itemSelectText: '',
+                placeholder: true,
+                placeholderValue: 'Выберите из списка',
+                shouldSort: false,
             });
         }
     });
@@ -397,6 +406,326 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => {
             modal.setAttribute('hidden', true);
         }, 100);
+    }
+
+    // Загрузка файлов в форме
+    const fileInputs = document.querySelectorAll('.page-form__files input[type="file"]');
+    if (fileInputs) {
+        fileInputs.forEach((input) => {
+            input.addEventListener('change', function () {
+                const files = Array.from(this.files);
+                const parent = this.closest('.page-form__files');
+                const infoElement = parent.querySelector('.page-form__files-name span');
+
+                if (files.length === 0) {
+                    infoElement.textContent = 'Файл не выбран';
+                    return;
+                }
+
+                const names = files.map((file) => file.name);
+                infoElement.textContent = names.join(', ');
+            });
+        });
+    }
+
+    // Валидация дат в инпутах формы дд/мм/гг
+    const dateInputs = document.querySelectorAll('[data-date-input]');
+    if (dateInputs) {
+        dateInputs.forEach((input) => {
+            let previousLength = 0;
+            let previousRawValue = '';
+
+            input.addEventListener('input', function () {
+                const currentLength = this.value.length;
+                const isDeleting = currentLength < previousLength;
+
+                let value = this.value.replace(/\D/g, '');
+
+                if (value.length > 6) {
+                    value = value.slice(0, 6);
+                }
+
+                if (!isDeleting && value.length > 0) {
+                    value = autoCorrectDate(value, previousRawValue);
+                }
+
+                let formatted = '';
+                for (let i = 0; i < value.length; i++) {
+                    if (i === 2 || i === 4) {
+                        formatted += '/';
+                    }
+                    formatted += value[i];
+                }
+
+                this.value = formatted;
+                previousLength = formatted.length;
+                previousRawValue = value;
+            });
+
+            input.addEventListener('paste', function () {
+                setTimeout(() => {
+                    this.dispatchEvent(new Event('input'));
+                }, 0);
+            });
+
+            input.addEventListener('blur', function () {
+                const value = this.value.replace(/\D/g, '');
+                if (value.length === 6) {
+                    const day = value.slice(0, 2);
+                    const month = value.slice(2, 4);
+                    let year = value.slice(4, 6);
+
+                    const currentYear = new Date().getFullYear();
+                    const currentYearShort = currentYear % 100;
+
+                    let yearNum = parseInt(year);
+                    if (yearNum > currentYearShort) yearNum = currentYearShort;
+                    if (yearNum < 0) yearNum = 0;
+                    year = String(yearNum).padStart(2, '0');
+
+                    const corrected = day + month + year;
+                    let formatted = '';
+                    for (let i = 0; i < corrected.length; i++) {
+                        if (i === 2 || i === 4) formatted += '/';
+                        formatted += corrected[i];
+                    }
+                    this.value = formatted;
+                }
+            });
+        });
+    }
+
+    function autoCorrectDate(value, previousValue = '') {
+        if (value.length === 0) return value;
+
+        const currentYear = new Date().getFullYear();
+        const currentYearShort = currentYear % 100;
+
+        let day = '';
+        let month = '';
+        let year = '';
+
+        if (value.length <= 2) {
+            day = value;
+            const dayNum = parseInt(day);
+            if (dayNum > 31) {
+                day = '31';
+            }
+            if (dayNum < 1 && day.length === 2) {
+                day = '01';
+            }
+            return day;
+        } else if (value.length <= 4) {
+            day = value.slice(0, 2);
+            month = value.slice(2);
+
+            let dayNum = parseInt(day);
+            if (dayNum > 31) dayNum = 31;
+            if (dayNum < 1) dayNum = 1;
+            day = String(dayNum).padStart(2, '0');
+
+            let monthNum = parseInt(month);
+            if (monthNum > 12) monthNum = 12;
+            if (monthNum < 1) monthNum = 1;
+            month = String(monthNum).padStart(2, '0');
+
+            return day + month;
+        } else {
+            day = value.slice(0, 2);
+            month = value.slice(2, 4);
+            year = value.slice(4, 6);
+
+            let dayNum = parseInt(day);
+            if (dayNum > 31) dayNum = 31;
+            if (dayNum < 1) dayNum = 1;
+            day = String(dayNum).padStart(2, '0');
+
+            let monthNum = parseInt(month);
+            if (monthNum > 12) monthNum = 12;
+            if (monthNum < 1) monthNum = 1;
+            month = String(monthNum).padStart(2, '0');
+
+            let yearNum = parseInt(year);
+            if (year.length === 1) {
+                return day + month + year;
+            } else if (year.length === 2) {
+                if (yearNum > currentYearShort) yearNum = currentYearShort;
+                if (yearNum < 0) yearNum = 0;
+                year = String(yearNum).padStart(2, '0');
+            }
+
+            return day + month + year;
+        }
+    }
+
+    // Валидация возраста в инпутах формы
+    const ageInputs = document.querySelectorAll('[data-age-input]');
+    if (ageInputs) {
+        ageInputs.forEach((input) => {
+            input.addEventListener('input', function () {
+                let value = this.value.replace(/[^0-9]/g, '');
+
+                if (value.length > 1 && value.startsWith('0')) {
+                    value = value.replace(/^0+/, '');
+                }
+
+                if (value.length > 3) {
+                    value = value.slice(0, 3);
+                }
+
+                this.value = value;
+
+                autoCorrectAge(this);
+            });
+
+            input.addEventListener('blur', function () {
+                autoCorrectAge(this, true);
+            });
+
+            input.addEventListener('paste', function () {
+                setTimeout(() => {
+                    let value = this.value.replace(/[^0-9]/g, '');
+                    if (value.length > 1 && value.startsWith('0')) {
+                        value = value.replace(/^0+/, '');
+                    }
+                    if (value.length > 3) {
+                        value = value.slice(0, 3);
+                    }
+                    this.value = value;
+                    autoCorrectAge(this);
+                }, 0);
+            });
+        });
+    }
+
+    function autoCorrectAge(input, onBlur = false) {
+        const value = input.value.trim();
+
+        if (!value) {
+            return;
+        }
+
+        let age = parseInt(value);
+
+        if (isNaN(age)) {
+            input.value = '';
+            return;
+        }
+
+        if (age < 0) {
+            age = 0;
+        } else if (age > 120) {
+            age = 120;
+        }
+
+        input.value = age;
+    }
+
+    function autoCorrectDate(value, previousValue = '') {
+        if (value.length === 0) return value;
+
+        const currentYear = new Date().getFullYear();
+        const currentYearShort = currentYear % 100;
+
+        let day = '';
+        let month = '';
+        let year = '';
+
+        if (value.length <= 2) {
+            day = value;
+            const dayNum = parseInt(day);
+            if (dayNum > 31) {
+                day = '31';
+            }
+            if (dayNum < 1 && day.length === 2) {
+                day = '01';
+            }
+            return day;
+        } else if (value.length <= 4) {
+            day = value.slice(0, 2);
+            month = value.slice(2);
+
+            let dayNum = parseInt(day);
+            if (dayNum > 31) dayNum = 31;
+            if (dayNum < 1) dayNum = 1;
+            day = String(dayNum).padStart(2, '0');
+
+            let monthNum = parseInt(month);
+            if (monthNum > 12) monthNum = 12;
+            if (monthNum < 1) monthNum = 1;
+            month = String(monthNum).padStart(2, '0');
+
+            return day + month;
+        } else {
+            day = value.slice(0, 2);
+            month = value.slice(2, 4);
+            year = value.slice(4, 6);
+
+            let dayNum = parseInt(day);
+            if (dayNum > 31) dayNum = 31;
+            if (dayNum < 1) dayNum = 1;
+            day = String(dayNum).padStart(2, '0');
+
+            let monthNum = parseInt(month);
+            if (monthNum > 12) monthNum = 12;
+            if (monthNum < 1) monthNum = 1;
+            month = String(monthNum).padStart(2, '0');
+
+            let yearNum = parseInt(year);
+            if (year.length === 1) {
+                return day + month + year;
+            } else if (year.length === 2) {
+                if (yearNum > currentYearShort) yearNum = currentYearShort;
+                if (yearNum < 0) yearNum = 0;
+                year = String(yearNum).padStart(2, '0');
+            }
+
+            return day + month + year;
+        }
+    }
+
+    function validateDate(input) {
+        const value = input.value;
+
+        if (!value) {
+            return;
+        }
+
+        if (value.length !== 8) {
+            return;
+        }
+
+        const parts = value.split('/');
+        if (parts.length !== 3) {
+            return;
+        }
+
+        const day = parseInt(parts[0]);
+        const month = parseInt(parts[1]);
+        const year = parseInt(parts[2]);
+
+        if (isNaN(day) || isNaN(month) || isNaN(year)) {
+            return;
+        }
+
+        const currentYear = new Date().getFullYear();
+        const currentYearShort = currentYear % 100;
+
+        const isValidDay = day >= 1 && day <= 31;
+        const isValidMonth = month >= 1 && month <= 12;
+        const isValidYear = year >= 0 && year <= currentYearShort;
+
+        let isValidDate = isValidDay && isValidMonth && isValidYear;
+
+        if (isValidDate) {
+            const fullYear = 2000 + year;
+            const dateObj = new Date(fullYear, month - 1, day);
+            const isValidRealDate = dateObj.getFullYear() === fullYear && dateObj.getMonth() === month - 1 && dateObj.getDate() === day;
+
+            isValidDate = isValidRealDate;
+        }
+
+        return isValidDate;
     }
 
     // Мобильное меню

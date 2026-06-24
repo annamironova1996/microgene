@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title>Форма обратной связи для специалиста здравоохранения</title>
+        <link rel="stylesheet" href="./css/fonts.css" />
+        <link rel="stylesheet" href="./css/reset.css" />
+        <link rel="stylesheet" href="./css/variables.css" />
+        <link rel="stylesheet" href="./css/choices.min.css" />
+        <link rel="stylesheet" href="./css/swiper-bundle.css" />
+        <link rel="stylesheet" href="./css/template_styles.css" />
+        <link rel="stylesheet" href="./css/styles.css" />
+    </head>
+    <body>
+        <header class="header">
+            <div class="container">
+                <div class="header-inner">
+                    <!-- кнопка для мобильного меню  -->
+                    <button type="button" class="header-mobile__button" aria-label="Открыть мобильное меню">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <div class="header-brand" aria-label="Информация о компании">
+                        <a href="index.html" class="header-brand__logo">
+                            <img src="./images/logo.png" width="188" height="32" alt="Логотип" />
+                        </a>
+                        <ul class="header-brand__logos">
+                            <li>
+                                <a href="" target="_blank" rel="noopener noreferrer">
+                                    <img src="./images/opacity-nacimbio.svg" width="173" height="32" alt="Логотип НАЦИМБИО" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank" rel="noopener noreferrer">
+                                    <img src="./images/opacity-rostec.svg" width="101" height="32" alt="Логотип НАЦИМБИО" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <nav class="header-nav" aria-label="Навигация по сайту">
+                        <ul>
+                            <li>
+                                <a href="products.html">Продукция</a>
+                                <ul>
+                                    <li>
+                                        <a href="category-products.html">Анатоксины, токсины</a>
+                                    </li>
+                                    <li><a href="category-products.html">Вакцины</a></li>
+                                    <li><a href="category-products.html">Иммуноглобулины</a></li>
+                                    <li>
+                                        <a href="category-products.html">Питательные среды</a>
+                                    </li>
+                                    <li>
+                                        <a href="category-products.html">Медицинские изделия для диагностики IN VITRO</a>
+                                    </li>
+                                    <li><a href="category-products.html">Бактериофаги</a></li>
+                                    <li><a href="category-products.html">Препараты крови</a></li>
+                                    <li>
+                                        <a href="category-products.html">Аллергены, аллергоиды</a>
+                                    </li>
+                                    <li><a href="category-products.html">Сыворотки</a></li>
+                                    <li><a href="category-products.html">Другие препараты</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="about.html">О компании</a></li>
+                            <li><a href="manufacturing.html">Производство</a></li>
+                            <li><a href="research.html">Наука</a></li>
+                            <li><a href="press-center.html">Пресс-центр</a></li>
+                            <li><a href="contacts.html">Контакты</a></li>
+                            <li>
+                                <a href="#!" target="_blank" rel="noopener noreferrer">Мобильное приложение</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="header-additional">
+                        <div class="header-search">
+                            <button type="button" class="header-search__button" aria-label="Открыть поиск"></button>
+                            <div class="header-search__modal" hidden aria-label="Панель поиска">
+                                <div class="header-search__inner">
+                                    <form class="header-search__form">
+                                        <input type="search" name="header_search" class="header-search__input" placeholder="Поиск по сайту" />
+                                    </form>
+                                    <!-- выводить, если есть результат (для внешего вида лучше выводить не больше 5ти результатов) -->
+                                    <ul class="header-search__results">
+                                        <li>
+                                            <a href="product.html">РЕЛАТОКС® Токсин ботулинический типа А в комплексе с гемагглютинином</a>
+                                        </li>
+                                        <li>
+                                            <a href="product.html">Секстафаг® Пиобактериофаг поливалентный</a>
+                                        </li>
+                                        <li>
+                                            <a href="product.html">Интестифаг® (Интести-бактериофаг)</a>
+                                        </li>
+                                        <li>
+                                            <a href="product.html">РЕЛАТОКС® Токсин ботулинический типа А в комплексе с гемагглютинином</a>
+                                        </li>
+                                        <li>
+                                            <a href="product.html">Секстафаг® Пиобактериофаг поливалентный</a>
+                                        </li>
+                                    </ul>
+                                    <!-- выводить, если результата нет  -->
+                                    <!-- <div class="header-search__empty">
+                                        <p>По вашему запросу ничего не найдено</p>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-lang custom-select">
+                            <select class="header-lang__select" id="select_lang" data-select>
+                                <!-- в data-url нужно вставить url перехода на другой язык  -->
+                                <option value="RU" data-url="#!" selected>RU</option>
+                                <option value="EN" data-url="#!">EN</option>
+                                <option value="DE" data-url="#!">DE</option>
+                                <option value="FR" data-url="#!">FR</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- мобильное меню  -->
+                    <div class="header-mobile" id="mobile-menu" hidden>
+                        <div class="header-mobile__wrapper">
+                            <div class="header-mobile__menu">
+                                <!-- меню первого уровня -->
+                                <nav class="header-mobile__main-menu" aria-label="Основная навигация">
+                                    <ul>
+                                        <li>
+                                            <a href="products.html">Продукция</a>
+                                            <button type="button" class="header-mobile__open-btn" aria-label="Открыть подменю 'Продукция'" aria-controls="mobile-submenu-products">
+                                                <span class="visually-hidden">Открыть подменю</span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <a href="about.html">О компании</a>
+                                            <button type="button" class="header-mobile__open-btn" aria-label="Открыть подменю 'О компании'" aria-controls="mobile-submenu-about">
+                                                <span class="visually-hidden">Открыть подменю</span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <a href="manufacturing.html">Производство</a>
+                                            <button type="button" class="header-mobile__open-btn" aria-label="Открыть подменю 'Производство'" aria-controls="mobile-submenu-manufacturing">
+                                                <span class="visually-hidden">Открыть подменю</span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <a href="research.html">Наука</a>
+                                        </li>
+                                        <li>
+                                            <a href="press-center.html">Пресс-центр</a>
+                                        </li>
+                                        <li>
+                                            <a href="contacts.html">Контакты</a>
+                                        </li>
+                                        <li>
+                                            <a href="#!" target="_blank" rel="noopener noreferrer">Мобильное приложение</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+
+                                <!-- Подменю для "Продукция" -->
+                                <nav class="header-mobile__submenu-nav" id="mobile-submenu-products" aria-label="Подменю продукции" hidden>
+                                    <button type="button" class="header-mobile__back-btn" aria-label="Назад к основному меню">Назад</button>
+                                    <h2 class="header-mobile__submenu-title">Продукция</h2>
+                                    <ul class="header-mobile__submenu">
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 2</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 3</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 4</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 5</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 6</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 7</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 8</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+
+                                <!-- Подменю для "О нас" -->
+                                <nav class="header-mobile__submenu-nav" id="mobile-submenu-about" aria-label="Подменю О компании" hidden>
+                                    <button type="button" class="header-mobile__back-btn" aria-label="Назад к основному меню">Назад</button>
+                                    <h2 class="header-mobile__submenu-title">О компании</h2>
+                                    <ul class="header-mobile__submenu">
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 2</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 3</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 4</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 5</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 6</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 7</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 8</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+
+                                <!-- Подменю для "Производство" -->
+                                <nav class="header-mobile__submenu-nav" id="mobile-submenu-manufacturing" aria-label="Подменю Производство" hidden>
+                                    <button type="button" class="header-mobile__back-btn" aria-label="Назад к основному меню">Назад</button>
+                                    <h2 class="header-mobile__submenu-title">Производство</h2>
+                                    <ul class="header-mobile__submenu">
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 2</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 3</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 4</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 5</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 6</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 7</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 8</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="header-mobile__bottom">
+                                <div class="header-mobile__inner">
+                                    <div class="header-badge">
+                                        <h3 class="header-badge__title">связаться с нами</h3>
+                                        <div class="header-badge__icon">
+                                            <img src="./images/badge-phone.svg" alt="Иконка телефона" width="18" height="18" loading="lazy" />
+                                        </div>
+                                    </div>
+                                    <div class="header-mobile__contacts">
+                                        <div class="header-mobile__info">
+                                            <a href="tel:+7 (495) 790-77-73">+7 (495) 790-77-73</a>
+                                            <p>ежедневно, 9.00-18.00</p>
+                                        </div>
+                                        <ul class="header-mobile__socials">
+                                            <li>
+                                                <a href="https://vk.com/" target="_blank" rel="noopener noreferrer">
+                                                    <img src="./images/vk.svg" alt="Иконка VK" width="16.5" height="16.5" loading="lazy" />
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <!-- Хлебные крошки -->
+            <section class="breadcrumbs">
+                <div class="container">
+                    <nav class="breadcrumbs-nav" aria-label="Хлебные крошки">
+                        <ul class="breadcrumbs-list">
+                            <li><a href="./index.html">Главная</a></li>
+                            <li><a href="./products.html">Продукция</a></li>
+                            <li><a href="./drug-safety.html">Безопасность препаратов</a></li>
+                            <li>
+                                <span>Форма обратной связи для специалиста здравоохранения</span>
+                            </li>
+                        </ul>
+                    </nav>
+                    <button type="button" class="breadcrumbs-back" onclick="history.back()">Назад</button>
+                </div>
+            </section>
+
+            <!-- Форма обратной связи для специалиста здравоохранения -->
+            <section class="top-section">
+                <div class="container">
+                    <h1 class="title-1">Форма обратной связи для специалиста здравоохранения</h1>
+                    <form class="page-form">
+                        <div class="page-form__wrapper">
+                            <h2 class="title-4 page-form__title">Лицо, сообщающее о нежелательной реакции (НР)</h2>
+                            <div class="page-form__rows">
+                                <div class="page-form__grid-2">
+                                    <div class="page-form__inner">
+                                        <label for="name">Ваше имя*</label>
+                                        <input type="text" id="name" name="name" placeholder="Укажите ваше Имя" required autocomplete="off" />
+                                        <!-- выводить, если есть ошибка -->
+                                        <span class="page-form__error">Текст ошибки</span>
+                                    </div>
+                                    <div class="page-form__inner">
+                                        <label for="position">Кем вы являетесь?*</label>
+                                        <input type="text" id="position" name="position" placeholder="Например, врач, медицинская сестра, провизор и т.д" required autocomplete="off" />
+                                        <!-- выводить, если есть ошибка -->
+                                        <span class="page-form__error">Текст ошибки</span>
+                                    </div>
+                                </div>
+                                <div class="page-form__grid-2">
+                                    <div class="page-form__inner">
+                                        <label for="address">Населенный пункт</label>
+                                        <input type="text" id="address" name="address" placeholder="Укажите населенный пункт" required autocomplete="off" />
+                                    </div>
+                                    <div class="page-form__inner">
+                                        <label for="connection">Выберите предпочтительный способ связи*</label>
+                                        <select name="connection" id="connection" data-select required>
+                                            <!-- пустой option, чтобы работал select  -->
+                                            <option value="" disabled>Выберите из списка</option>
+                                            <option value="Способ 1">Способ 1</option>
+                                            <option value="Способ 2">Способ 1</option>
+                                            <option value="Способ 3">Способ 1</option>
+                                        </select>
+                                        <!-- выводить, если есть ошибка -->
+                                        <span class="page-form__error">Текст ошибки</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page-form__wrapper">
+                            <h2 class="title-4 page-form__title">Информация о пациенте</h2>
+                            <div class="page-form__rows">
+                                <div class="page-form__grid-3">
+                                    <div class="page-form__inner">
+                                        <label for="patient_name">Инициалы*</label>
+                                        <input type="text" id="patient_name" name="patient_name" placeholder="Укажите Инициалы пациента" required autocomplete="off" />
+                                        <!-- выводить, если есть ошибка -->
+                                        <span class="page-form__error">Текст ошибки</span>
+                                    </div>
+                                    <div class="page-form__inner">
+                                        <label for="patient_gender">Пол</label>
+                                        <select name="patient_gender" id="patient_gender" data-select>
+                                            <option value="Пол 1">Пол 1</option>
+                                            <option value="Пол 2">Пол 2</option>
+                                        </select>
+                                    </div>
+                                    <div class="page-form__inner">
+                                        <label for="patient_age">Возраст</label>
+                                        <input type="number" id="patient_age" name="patient_age" placeholder="Укажите возраст пациента" autocomplete="off" data-age-input />
+                                    </div>
+                                </div>
+                                <div class="page-form__inner">
+                                    <label for="patient_diseases">Сопутствующие заболевания</label>
+                                    <textarea id="patient_diseases" name="patient_diseases" placeholder="Перечислите известные вам заболевания пациента"></textarea>
+                                </div>
+                                <div class="page-form__grid-2">
+                                    <div class="page-form__inner">
+                                        <label for="patient_allergy">Аллергия</label>
+                                        <select name="patient_allergy" id="patient_allergy" data-select>
+                                            <option value="Аллергия 1">Аллергия 1</option>
+                                            <option value="Аллергия 2">Аллергия 2</option>
+                                            <option value="Аллергия 3">Аллергия 3</option>
+                                            <option value="Аллергия 4">Аллергия 4</option>
+                                            <option value="Аллергия 5">Аллергия 5</option>
+                                            <option value="Аллергия 6">Аллергия 6</option>
+                                            <option value="Аллергия 7">Аллергия 7</option>
+                                            <option value="Аллергия 8">Аллергия 8</option>
+                                            <option value="Аллергия 9">Аллергия 9</option>
+                                            <option value="Аллергия 10">Аллергия 10</option>
+                                            <option value="Аллергия 11">Аллергия 11</option>
+                                            <option value="Аллергия 12">Аллергия 12</option>
+                                            <option value="Аллергия 13">Аллергия 13</option>
+                                            <option value="Аллергия 14">Аллергия 14</option>
+                                            <option value="Аллергия 15">Аллергия 15</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="page-form__inner">
+                                    <label for="patient_drugs">Препараты, принимаемые в течение последних 3 месяцев</label>
+                                    <textarea id="patient_drugs" name="patient_drugs" placeholder="Перечислите в строчку через запятую препараты"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page-form__wrapper">
+                            <h2 class="title-4 page-form__title">Информация о лекарственном препарате, вызвавшем НР</h2>
+                            <div class="page-form__rows">
+                                <div class="page-form__grid-2">
+                                    <div class="page-form__inner">
+                                        <label for="drug_name">Название препарата*</label>
+                                        <input type="text" id="drug_name" name="drug_name" placeholder="Укажите название препарата" required autocomplete="off" />
+                                        <!-- выводить, если есть ошибка -->
+                                        <span class="page-form__error">Текст ошибки</span>
+                                    </div>
+                                    <div class="page-form__inner">
+                                        <label for="drug_series">Номер серии</label>
+                                        <input type="text" id="drug_series" name="drug_series" placeholder="Укажите Номер серии" autocomplete="off" />
+                                    </div>
+                                </div>
+                                <div class="page-form__inner">
+                                    <label for="drug_indication">Показание для приема</label>
+                                    <textarea id="drug_indication" name="drug_indication" placeholder="Перечислите показание для приема"></textarea>
+                                </div>
+                                <div class="page-form__grid-2">
+                                    <div class="page-form__inner">
+                                        <label for="drug_details">Путь введения, доза</label>
+                                        <textarea id="drug_details" name="drug_details" placeholder="Укажите путь введения, доза"></textarea>
+                                    </div>
+                                    <div class="page-form__inner">
+                                        <label for="drug_details">Дата применения</label>
+                                        <input type="text" id="drug_details" name="drug_details" placeholder="дд/мм/гг" autocomplete="off" data-date-input />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page-form__wrapper">
+                            <h2 class="title-4 page-form__title">Описание НР</h2>
+                            <div class="page-form__rows">
+                                <div class="page-form__inner">
+                                    <label for="reaction_symptom">Симптомы НР*</label>
+                                    <textarea name="reaction_symptom" id="reaction_symptom" placeholder="Перечислите симптомы НР" required></textarea>
+                                    <!-- выводить, если есть ошибка -->
+                                    <span class="page-form__error">Текст ошибки</span>
+                                </div>
+                                <div class="page-form__grid-2">
+                                    <div class="page-form__inner">
+                                        <label for="reaction_to">Дата начала НР</label>
+                                        <input type="text" id="reaction_to" name="reaction_to" placeholder="дд/мм/гг" autocomplete="off" data-date-input />
+                                    </div>
+                                    <div class="page-form__inner">
+                                        <label for="reaction_from">Дата окончания НР</label>
+                                        <input type="text" id="reaction_from" name="reaction_from" placeholder="дд/мм/гг" autocomplete="off" data-date-input />
+                                    </div>
+                                </div>
+                                <div class="page-form__grid-2">
+                                    <div class="page-form__inner">
+                                        <label for="patient_outcome">Исход НР</label>
+                                        <select name="patient_outcome" id="patient_outcome" data-select>
+                                            <option value="Исход НР 1">Исход НР 1</option>
+                                            <option value="Исход НР 2">Исход НР 2</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page-form__wrapper">
+                            <h2 class="title-4 page-form__title">Приложите дополнительные файлы, если это необходимо</h2>
+                            <div class="page-form__files">
+                                <div class="page-form__files-info">
+                                    <div class="page-form__files-button">
+                                        <input type="file" id="file" name="file[]" accept="image/png, image/jpeg, application/pdf" multiple />
+                                        <button type="button">прикрепить файл</button>
+                                    </div>
+                                    <div class="page-form__files-name">
+                                        <span>Файл не выбран</span>
+                                    </div>
+                                </div>
+                                <div class="page-form__files-warning">
+                                    <p>Файл не более 5 мб, в формате png, jpeg, pdf</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page-form__checkbox">
+                            <input type="checkbox" id="checkbox" name="checkbox" />
+                            <label for="checkbox"
+                                ><p>Нажимая на кнопку я подтверждаю, что ознакомлен с <a href="privacy-policy.html">Политикой по обработке персональных данных</a> и даю <a href="privacy.html">Согласие на обработку персональных данных</a></p></label
+                            >
+                            <!-- выводить, если есть ошибка -->
+                            <span class="page-form__error">Текст ошибки</span>
+                        </div>
+                        <!-- класс base-button--disabled делает кнопку неактивной  -->
+                        <!-- кнопка становится неактивной в случае ошибок при валидации -->
+                        <button type="submit" class="base-button base-button--blue base-button--disabled"><span>Отправить форму</span></button>
+                    </form>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-inner">
+                    <div class="footer-top">
+                        <div class="footer-top__info">
+                            <div class="footer-top__brand" aria-label="Информация о компании">
+                                <a href="index.html" class="footer-top__logo">
+                                    <img src="./images/logo.png" width="247" height="42" loading="lazy" alt="Логотип" />
+                                </a>
+                                <div class="footer-top__description">
+                                    <h2>Национальный производитель иммунобиологических препаратов в России</h2>
+                                </div>
+                            </div>
+
+                            <div class="footer-top__blocks">
+                                <div class="footer-top__block" aria-label="Контактная информация">
+                                    <div class="footer-badge">
+                                        <h3 class="footer-badge__title">связаться с нами</h3>
+                                        <div class="footer-badge__icon">
+                                            <img src="./images/badge-phone.svg" alt="Иконка телефона" width="18" height="18" loading="lazy" />
+                                        </div>
+                                    </div>
+                                    <div class="footer-top__contacts">
+                                        <a href="tel:+7 (495) 790-77-73">+7 (495) 790-77-73</a>
+                                        <p>ежедневно, 9.00-18.00</p>
+                                        <a href="mailto:info@microgen.ru">info@microgen.ru</a>
+                                    </div>
+                                    <ul class="footer-top__socials">
+                                        <li>
+                                            <a href="https://vk.com/" target="_blank" rel="noopener noreferrer" aria-label="Ссылка на VK">
+                                                <img src="./images/vk.svg" alt="Иконка VK" width="20" height="20" loading="lazy" />
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="footer-top__block" aria-label="Адрес компании">
+                                    <div class="footer-badge">
+                                        <h3 class="footer-badge__title">юридический адрес</h3>
+                                        <div class="footer-badge__icon">
+                                            <img src="./images/badge-location.svg" alt="Иконка локации" width="18" height="18" loading="lazy" />
+                                        </div>
+                                    </div>
+                                    <address class="footer-top__address">127473, г. Москва, 2-й Волконский переулок, д.10</address>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="footer-top__navs" aria-label="Навигация по сайту">
+                            <nav class="footer-top__nav">
+                                <div class="footer-badge">
+                                    <h3 class="footer-badge__title">Навигация</h3>
+                                    <div class="footer-badge__icon">
+                                        <img src="./images/badge-navigation.svg" alt="Иконка навигации" width="18" height="18" loading="lazy" />
+                                    </div>
+                                </div>
+                                <ul class="footer-top__menu">
+                                    <li><a href="index.html">Главная</a></li>
+                                    <li><a href="about.html">О компании</a></li>
+                                    <li><a href="manufacturing.html">Производство</a></li>
+                                    <li><a href="research.html">Наука</a></li>
+                                    <li><a href="press-center.html">Пресс-центр</a></li>
+                                    <li>
+                                        <a href="#!" target="_blank" rel="noopener noreferrer">Мобильное приложение</a>
+                                    </li>
+                                    <li>
+                                        <a href="drug-safety.html">Безопасность препаратов</a>
+                                    </li>
+                                    <li><a href="contacts.html">Контакты</a></li>
+                                </ul>
+                            </nav>
+                            <nav class="footer-top__nav footer-top__nav--production">
+                                <div class="footer-badge">
+                                    <h3 class="footer-badge__title">продукция</h3>
+                                    <div class="footer-badge__icon">
+                                        <img src="./images/badge-2.svg" alt="Иконка продукции" width="18" height="18" loading="lazy" />
+                                    </div>
+                                </div>
+                                <ul class="footer-top__menu">
+                                    <li><a href="category-products.html">Вакцины</a></li>
+                                    <li>
+                                        <a href="category-products.html">Аллергены, аллергоиды</a>
+                                    </li>
+                                    <li>
+                                        <a href="category-products.html">Анатоксины, токсины</a>
+                                    </li>
+                                    <li><a href="category-products.html">Бактериофаги</a></li>
+                                    <li><a href="category-products.html">Иммуноглобулины</a></li>
+                                    <li><a href="category-products.html">Препараты крови</a></li>
+                                    <li><a href="category-products.html">Сыворотки</a></li>
+                                    <li>
+                                        <a href="category-products.html">Питательные среды</a>
+                                    </li>
+                                    <li>
+                                        <a href="category-products.html">Медицинские изделия для диагностики IN VITRO</a>
+                                    </li>
+                                    <li><a href="category-products.html">Другие препараты</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <div class="footer-top__useful">
+                            <div class="footer-badge">
+                                <h3 class="footer-badge__title">полезные ссылки</h3>
+                                <div class="footer-badge__icon">
+                                    <img src="./images/badge-links.svg" alt="Иконка навигации" width="18" height="18" loading="lazy" />
+                                </div>
+                            </div>
+                            <ul class="footer-top__links">
+                                <li>
+                                    <a href="#!" target="_blank" rel="noopener noreferrer">
+                                        <img src="./images/nacimbio-logo.svg" width="228" height="42" alt="Логотип НАЦИМБИО" loading="lazy" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#!" target="_blank" rel="noopener noreferrer">
+                                        <img src="./images/rostec.svg" width="133" height="42" alt="Логотип НАЦИМБИО" loading="lazy" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#!" target="_blank" rel="noopener noreferrer">
+                                        <img src="./images/hotline.png" width="246" height="42" alt="Горячая линия" loading="lazy" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <p>© 2026 АО "НПО "Микроген". Все права защищены</p>
+
+                        <nav class="footer-bottom__nav" aria-label="Навигация по сайту">
+                            <ul>
+                                <li><a href="sitemap.html">Карта сайта</a></li>
+                                <li>
+                                    <a href="privacy-policy.html">Политика по обработке Персональных данных</a>
+                                </li>
+                                <li>
+                                    <a href="mobile-app-privacy.html">Политика конфиденциальности для мобильного приложения «ПРИВИВКИ — ЛИЧНЫЙ КАЛЕНДАРЬ»</a>
+                                </li>
+                                <li>
+                                    <a href="cookie-policy.html">Условия использования файлов cookie</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="./js/swiper-bundle.min.js"></script>
+        <script src="./js/choices.min.js"></script>
+        <script src="./js/index.js"></script>
+    </body>
+</html>
