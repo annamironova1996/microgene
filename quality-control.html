@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <title>Контроль качества</title>
+        <link rel="stylesheet" href="./css/fonts.css" />
+        <link rel="stylesheet" href="./css/reset.css" />
+        <link rel="stylesheet" href="./css/variables.css" />
+        <link rel="stylesheet" href="./css/choices.min.css" />
+        <link rel="stylesheet" href="./css/swiper-bundle.css" />
+        <link rel="stylesheet" href="./css/template_styles.css" />
+        <link rel="stylesheet" href="./css/styles.css" />
+    </head>
+    <body>
+        <header class="header">
+            <div class="container">
+                <div class="header-inner">
+                    <!-- кнопка для мобильного меню  -->
+                    <button type="button" class="header-mobile__button" aria-label="Открыть мобильное меню">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <div class="header-brand" aria-label="Информация о компании">
+                        <a href="index.html" class="header-brand__logo">
+                            <img src="./images/logo.png" width="188" height="32" alt="Логотип" />
+                        </a>
+                        <ul class="header-brand__logos">
+                            <li>
+                                <a href="" target="_blank" rel="noopener noreferrer">
+                                    <img src="./images/opacity-nacimbio.svg" width="173" height="32" alt="Логотип НАЦИМБИО" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" target="_blank" rel="noopener noreferrer">
+                                    <img src="./images/opacity-rostec.svg" width="101" height="32" alt="Логотип НАЦИМБИО" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <nav class="header-nav" aria-label="Навигация по сайту">
+                        <ul>
+                            <li>
+                                <a href="products.html">Продукция</a>
+                                <ul>
+                                    <li>
+                                        <a href="category-products.html">Анатоксины, токсины</a>
+                                    </li>
+                                    <li><a href="category-products.html">Вакцины</a></li>
+                                    <li><a href="category-products.html">Иммуноглобулины</a></li>
+                                    <li>
+                                        <a href="category-products.html">Питательные среды</a>
+                                    </li>
+                                    <li>
+                                        <a href="category-products.html">Медицинские изделия для диагностики IN VITRO</a>
+                                    </li>
+                                    <li><a href="category-products.html">Бактериофаги</a></li>
+                                    <li><a href="category-products.html">Препараты крови</a></li>
+                                    <li>
+                                        <a href="category-products.html">Аллергены, аллергоиды</a>
+                                    </li>
+                                    <li><a href="category-products.html">Сыворотки</a></li>
+                                    <li><a href="category-products.html">Другие препараты</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="about.html">О компании</a></li>
+                            <li><a href="manufacturing.html">Производство</a></li>
+                            <li><a href="research.html">Наука</a></li>
+                            <li><a href="press-center.html">Пресс-центр</a></li>
+                            <li><a href="contacts.html">Контакты</a></li>
+                            <li>
+                                <a href="#!" target="_blank" rel="noopener noreferrer">Мобильное приложение</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="header-additional">
+                        <div class="header-search">
+                            <button type="button" class="header-search__button" aria-label="Открыть поиск"></button>
+                            <div class="header-search__modal" hidden aria-label="Панель поиска">
+                                <div class="header-search__inner">
+                                    <form class="header-search__form">
+                                        <input type="search" name="header_search" class="header-search__input" placeholder="Поиск по сайту" />
+                                    </form>
+                                    <!-- выводить, если есть результат (для внешего вида лучше выводить не больше 5ти результатов) -->
+                                    <ul class="header-search__results">
+                                        <li>
+                                            <a href="product.html">РЕЛАТОКС® Токсин ботулинический типа А в комплексе с гемагглютинином</a>
+                                        </li>
+                                        <li>
+                                            <a href="product.html">Секстафаг® Пиобактериофаг поливалентный</a>
+                                        </li>
+                                        <li>
+                                            <a href="product.html">Интестифаг® (Интести-бактериофаг)</a>
+                                        </li>
+                                        <li>
+                                            <a href="product.html">РЕЛАТОКС® Токсин ботулинический типа А в комплексе с гемагглютинином</a>
+                                        </li>
+                                        <li>
+                                            <a href="product.html">Секстафаг® Пиобактериофаг поливалентный</a>
+                                        </li>
+                                    </ul>
+                                    <!-- выводить, если результата нет  -->
+                                    <!-- <div class="header-search__empty">
+                                        <p>По вашему запросу ничего не найдено</p>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="header-lang custom-select">
+                            <select class="header-lang__select" id="select_lang" data-select>
+                                <!-- в data-url нужно вставить url перехода на другой язык  -->
+                                <option value="RU" data-url="#!" selected>RU</option>
+                                <option value="EN" data-url="#!">EN</option>
+                                <option value="DE" data-url="#!">DE</option>
+                                <option value="FR" data-url="#!">FR</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- мобильное меню  -->
+                    <div class="header-mobile" id="mobile-menu" hidden>
+                        <div class="header-mobile__wrapper">
+                            <div class="header-mobile__menu">
+                                <!-- меню первого уровня -->
+                                <nav class="header-mobile__main-menu" aria-label="Основная навигация">
+                                    <ul>
+                                        <li>
+                                            <a href="products.html">Продукция</a>
+                                            <button type="button" class="header-mobile__open-btn" aria-label="Открыть подменю 'Продукция'" aria-controls="mobile-submenu-products">
+                                                <span class="visually-hidden">Открыть подменю</span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <a href="about.html">О компании</a>
+                                            <button type="button" class="header-mobile__open-btn" aria-label="Открыть подменю 'О компании'" aria-controls="mobile-submenu-about">
+                                                <span class="visually-hidden">Открыть подменю</span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <a href="manufacturing.html">Производство</a>
+                                            <button type="button" class="header-mobile__open-btn" aria-label="Открыть подменю 'Производство'" aria-controls="mobile-submenu-manufacturing">
+                                                <span class="visually-hidden">Открыть подменю</span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <a href="research.html">Наука</a>
+                                        </li>
+                                        <li>
+                                            <a href="press-center.html">Пресс-центр</a>
+                                        </li>
+                                        <li>
+                                            <a href="contacts.html">Контакты</a>
+                                        </li>
+                                        <li>
+                                            <a href="#!" target="_blank" rel="noopener noreferrer">Мобильное приложение</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+
+                                <!-- Подменю для "Продукция" -->
+                                <nav class="header-mobile__submenu-nav" id="mobile-submenu-products" aria-label="Подменю продукции" hidden>
+                                    <button type="button" class="header-mobile__back-btn" aria-label="Назад к основному меню">Назад</button>
+                                    <h2 class="header-mobile__submenu-title">Продукция</h2>
+                                    <ul class="header-mobile__submenu">
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 2</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 3</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 4</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 5</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 6</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 7</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 8</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+
+                                <!-- Подменю для "О нас" -->
+                                <nav class="header-mobile__submenu-nav" id="mobile-submenu-about" aria-label="Подменю О компании" hidden>
+                                    <button type="button" class="header-mobile__back-btn" aria-label="Назад к основному меню">Назад</button>
+                                    <h2 class="header-mobile__submenu-title">О компании</h2>
+                                    <ul class="header-mobile__submenu">
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 2</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 3</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 4</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 5</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 6</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 7</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 8</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+
+                                <!-- Подменю для "Производство" -->
+                                <nav class="header-mobile__submenu-nav" id="mobile-submenu-manufacturing" aria-label="Подменю Производство" hidden>
+                                    <button type="button" class="header-mobile__back-btn" aria-label="Назад к основному меню">Назад</button>
+                                    <h2 class="header-mobile__submenu-title">Производство</h2>
+                                    <ul class="header-mobile__submenu">
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 2</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 3</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 4</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 5</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 6</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 7</a>
+                                        </li>
+                                        <li>
+                                            <a href="category-products.html">Наименование продукции 8</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="header-mobile__bottom">
+                                <div class="header-mobile__inner">
+                                    <div class="header-badge">
+                                        <h3 class="header-badge__title">связаться с нами</h3>
+                                        <div class="header-badge__icon">
+                                            <img src="./images/badge-9.svg" alt="Иконка телефона" width="18" height="18" loading="lazy" />
+                                        </div>
+                                    </div>
+                                    <div class="header-mobile__contacts">
+                                        <div class="header-mobile__info">
+                                            <a href="tel:+7 (495) 790-77-73">+7 (495) 790-77-73</a>
+                                            <p>ежедневно, 9.00-18.00</p>
+                                        </div>
+                                        <ul class="header-mobile__socials">
+                                            <li>
+                                                <a href="https://vk.com/" target="_blank" rel="noopener noreferrer">
+                                                    <img src="./images/vk.svg" alt="Иконка VK" width="16.5" height="16.5" loading="lazy" />
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main>
+            <!-- Баннер -->
+            <section class="banner">
+                <div class="container">
+                    <div class="banner-inner">
+                        <style>
+                            .banner-inner {
+                                background-image: url('./images/quality-banner-desktop.webp');
+                            }
+                            @media screen and (max-width: 540px) {
+                                .banner-inner {
+                                    background-image: url('./images/quality-banner-mobile.webp');
+                                }
+                            }
+                        </style>
+
+                        <h1 class="title-1">Контроль качества</h1>
+                        <div class="banner-inner__content">
+                            <p>Мы обеспечиваем безопасность, качество и эффективность лекарственных препаратов на каждом этапе производства в строгом соответствии с требованиями GMP и другими международными стандартами.</p>
+                        </div>
+                        <a href="manufacturing.html" class="base-button base-button--blue banner-inner__link"><span class="base-button__text--desktop">Подробнее о производстве</span><span class="base-button__text--mobile">о производстве</span></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Хлебные крошки -->
+            <section class="breadcrumbs">
+                <div class="container">
+                    <nav class="breadcrumbs-nav" aria-label="Хлебные крошки">
+                        <ul class="breadcrumbs-list">
+                            <li><a href="./index.html">Главная</a></li>
+                            <li><a href="./manufacturing.html">Производство</a></li>
+                            <li><span>Контроль качества</span></li>
+                        </ul>
+                    </nav>
+                    <button type="button" class="breadcrumbs-back" onclick="history.back()">Назад</button>
+                </div>
+            </section>
+
+            <!-- Качество как основа производства -->
+            <section class="section">
+                <div class="container">
+                    <div class="content-inner">
+                        <div class="title-row">
+                            <div class="badge badge-light-blue">
+                                <h3 class="badge-title">Подход</h3>
+                                <div class="badge-icon">
+                                    <img src="./images/badge-12.svg" alt="Иконка" width="20" height="20" loading="lazy" />
+                                </div>
+                            </div>
+                            <div class="title-container">
+                                <h2 class="title-2">Качество как основа производства</h2>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="content-text">
+                                <p>Ключевая цель НПО «Микроген» — выпуск качественных, эффективных, безопасных и конкурентоспособных биологических лекарственных препаратов, включая вакцины для национальных программ иммунизации. Для этого в компании внедрена и реализуется политика в области качества, охватывающая все этапы жизненного цикла продукции.</p>
+                            </div>
+                        </div>
+                        <div class="swiper grid-swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="block-image">
+                                        <img src="./images/block-image-1.webp" alt="Изображение" width="600" height="450" loading="lazy" />
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="block-image">
+                                        <img src="./images/block-image-2.webp" alt="Изображение" width="600" height="450" loading="lazy" />
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="block-image">
+                                        <img src="./images/block-image-3.webp" alt="Изображение" width="600" height="450" loading="lazy" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- От научного наследия — к развитию и инновациям -->
+            <section class="section">
+                <div class="container">
+                    <div class="content-inner">
+                        <div class="title-row">
+                            <div class="badge badge-light-blue">
+                                <h3 class="badge-title">Система</h3>
+                                <div class="badge-icon">
+                                    <img src="./images/badge-13.svg" alt="Иконка" width="20" height="20" loading="lazy" />
+                                </div>
+                            </div>
+                            <div class="title-container">
+                                <h2 class="title-2">Фармацевтическая система качества</h2>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <div class="content-row">
+                                <div class="content-text">
+                                    <p>Фармацевтическая система качества (ФСК) компании позволяет обеспечивать качество производимых препаратов на протяжении всего их жизненного цикла и охватывает все уровни производственного процесса, контроля, закупок и логистики. Управление качеством базируется на соблюдении требований надлежащей производственной практики (GMP) и непрерывно совершенствуется с учетом риск-ориентированного подхода и требований GMP.</p>
+                                </div>
+                                <div class="slider-buttons slider-buttons--lightblue">
+                                    <button type="button" class="slider-button slider-button--prev" aria-label="Предыдущий слайд"></button>
+                                    <button type="button" class="slider-button slider-button--next" aria-label="Следующий слайд"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper swiper-auto">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="block-info block-info--tiny">
+                                        <div class="block-info__header">
+                                            <h3 class="block-info__title">Управление поставщиками</h3>
+                                            <div class="block-info__image">
+                                                <img src="./images/block-info-18.svg" width="56" height="56" alt="Иконка" />
+                                            </div>
+                                        </div>
+                                        <div class="block-info__body">
+                                            <p>Контроль качества сырья и материалов на этапе закупки</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="block-info block-info--tiny">
+                                        <div class="block-info__header">
+                                            <h3 class="block-info__title">
+                                                Работа <br />
+                                                с отклонениями
+                                            </h3>
+                                            <div class="block-info__image">
+                                                <img src="./images/block-info-19.svg" width="56" height="56" alt="Иконка" />
+                                            </div>
+                                        </div>
+                                        <div class="block-info__body">
+                                            <p>Выявление коренной причины несоответствий</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <!-- если блок синего цвета, тогда добавляется класс block-info--dark -->
+                                    <div class="block-info block-info--tiny block-info--dark">
+                                        <div class="block-info__header">
+                                            <h3 class="block-info__title">УПРАВЛЕНИЕ ОБРАЩЕНИЯМИ</h3>
+                                            <div class="block-info__image">
+                                                <img src="./images/block-info-20.svg" width="56" height="56" alt="Иконка" />
+                                            </div>
+                                        </div>
+                                        <div class="block-info__body">
+                                            <p>Оперативная обработка обратной связи и повышение доверия</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="block-info block-info--tiny">
+                                        <div class="block-info__header">
+                                            <h3 class="block-info__title">
+                                                Контроль<br />
+                                                процессов
+                                            </h3>
+                                            <div class="block-info__image">
+                                                <img src="./images/block-info-21.svg" width="56" height="56" alt="Иконка" />
+                                            </div>
+                                        </div>
+                                        <div class="block-info__body">
+                                            <p>Непрерывный мониторинг производства и логистики</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="block-info block-info--tiny">
+                                        <div class="block-info__header">
+                                            <h3 class="block-info__title">
+                                                РАЗРАБОТКА <br />
+                                                САРА
+                                            </h3>
+                                            <div class="block-info__image">
+                                                <img src="./images/block-info-22.svg" width="56" height="56" alt="Иконка" />
+                                            </div>
+                                        </div>
+                                        <div class="block-info__body">
+                                            <p>Выполнение корректирующих и&nbsp;предупреждающих</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <!-- если блок синего цвета, тогда добавляется класс block-info--dark -->
+                                    <div class="block-info block-info--tiny block-info--dark">
+                                        <div class="block-info__header">
+                                            <h3 class="block-info__title">
+                                                ОБУЧЕНИЕ <br />
+                                                ПЕРСОНАЛА
+                                            </h3>
+                                            <div class="block-info__image">
+                                                <img src="./images/block-info-23.svg" width="56" height="56" alt="Иконка" />
+                                            </div>
+                                        </div>
+                                        <div class="block-info__body">
+                                            <p>Передача знаний, умений, навыков. Повышение квалификации</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <!-- если блок синего цвета, тогда добавляется класс block-info--dark -->
+                                    <div class="block-info block-info--tiny block-info--dark">
+                                        <div class="block-info__header">
+                                            <h3 class="block-info__title">
+                                                УПРАВЛЕНИЕ <br />
+                                                РИСКАМИ
+                                            </h3>
+                                            <div class="block-info__image">
+                                                <img src="./images/block-info-24.svg" width="56" height="56" alt="Иконка" />
+                                            </div>
+                                        </div>
+                                        <div class="block-info__body">
+                                            <p>Минимизация потенциальных несоответствий</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="block-info block-info--tiny">
+                                        <div class="block-info__header">
+                                            <h3 class="block-info__title">ВАЛИДАЦИЯ <br />И КВАЛИФИКАЦИЯ</h3>
+                                            <div class="block-info__image">
+                                                <img src="./images/block-info-25.svg" width="56" height="56" alt="Иконка" />
+                                            </div>
+                                        </div>
+                                        <div class="block-info__body">
+                                            <p>Подтверждение и гарантия соответствия заданным требованиям</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="block-info block-info--tiny">
+                                        <div class="block-info__header">
+                                            <h3 class="block-info__title">
+                                                УПРАВЛЕНИЕ <br />
+                                                ИЗМЕНЕНИЯМИ
+                                            </h3>
+                                            <div class="block-info__image">
+                                                <img src="./images/block-info-26.svg" width="56" height="56" alt="Иконка" />
+                                            </div>
+                                        </div>
+                                        <div class="block-info__body">
+                                            <p>Поддержание объектов в валидированном состоянии</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Многоуровневая система проверки -->
+            <section class="section">
+                <div class="container">
+                    <div class="content-inner">
+                        <div class="title-row">
+                            <div class="badge badge-light-blue">
+                                <h3 class="badge-title">Контроль</h3>
+                                <div class="badge-icon">
+                                    <img src="./images/badge-14.svg" alt="Иконка" width="20" height="20" loading="lazy" />
+                                </div>
+                            </div>
+
+                            <div class="title-content title-content--large content-inner">
+                                <h2 class="title-2">Многоуровневая система проверки</h2>
+                                <div class="content content--tiny">
+                                    <div class="title-content__text">
+                                        <p>Производственные площадки регулярно проходят внутренние и внешние проверки, подтверждая соответствие требованиям GMP и готовность к развитию.</p>
+                                    </div>
+                                    <ul class="custom-list">
+                                        <li><b>Внешние инспекции.</b> Контроль со стороны Минпромторга, Росздравнадзора и Роспотребнадзора</li>
+                                        <li><b>Внутренние проверки.</b> амоинспекции внутри каждой площадки.</li>
+                                        <li><b>Обзоры качества.</b> Ежегодная оценка продукции и процессов</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Люди и системный подход к качеству -->
+            <section class="light-blue-section">
+                <div class="container">
+                    <div class="content-inner">
+                        <div class="title-row">
+                            <div class="title-main">
+                                <div class="badge badge-white">
+                                    <h3 class="badge-title">Команда и управление</h3>
+                                    <div class="badge-icon">
+                                        <img src="./images/badge-15.svg" alt="Иконка" width="20" height="20" loading="lazy" />
+                                    </div>
+                                </div>
+                                <h2 class="title-2">Люди и системный подход к качеству</h2>
+                            </div>
+                        </div>
+
+                        <div class="content-text">
+                            <p>Ключевые сотрудники компании проходят обязательное обучение требованиям GxP и обеспечивают качество продукции за счёт высокой квалификации, системного подхода и строгого соблюдения стандартов на всех этапах производства.</p>
+                        </div>
+                        <ul class="grid-2 advantages-list advantages-list--top">
+                            <li class="advantages-item">
+                                <div class="advantages-item__image">
+                                    <img src="./images/advantages-item-1.svg" alt="Иконка" width="44" height="44" loading="lazy" />
+                                </div>
+                                <p class="advantages-item__title">Гарантию стабильного качества выпускаемых препаратов</p>
+                            </li>
+                            <li class="advantages-item">
+                                <div class="advantages-item__image">
+                                    <img src="./images/advantages-item-2.svg" alt="Иконка" width="44" height="44" loading="lazy" />
+                                </div>
+                                <p class="advantages-item__title">Недопущение использования материалов или продукции, неудовлетворяющих требованиям</p>
+                            </li>
+                            <li class="advantages-item">
+                                <div class="advantages-item__image">
+                                    <img src="./images/advantages-item-3.svg" alt="Иконка" width="44" height="44" loading="lazy" />
+                                </div>
+                                <p class="advantages-item__title">Высокую исполнительную дисциплину</p>
+                            </li>
+                            <li class="advantages-item">
+                                <div class="advantages-item__image">
+                                    <img src="./images/advantages-item-4.svg" alt="Иконка" width="44" height="44" loading="lazy" />
+                                </div>
+                                <p class="advantages-item__title">Совершенствование производства, внедрение современных технологий для обеспечения организации производства в соответствии с требованиями национальных и международных стандартов</p>
+                            </li>
+                            <li class="advantages-item">
+                                <div class="advantages-item__image">
+                                    <img src="./images/advantages-item-5.svg" alt="Иконка" width="44" height="44" loading="lazy" />
+                                </div>
+                                <p class="advantages-item__title">Повышение квалификации персонала</p>
+                            </li>
+                            <li class="advantages-item">
+                                <div class="advantages-item__image">
+                                    <img src="./images/advantages-item-6.svg" alt="Иконка" width="44" height="44" loading="lazy" />
+                                </div>
+                                <p class="advantages-item__title">Непрерывные обзор и оценку выпускаемой продукции, технологических процессов и методов контроля</p>
+                            </li>
+                            <li class="advantages-item">
+                                <div class="advantages-item__image">
+                                    <img src="./images/advantages-item-7.svg" alt="Иконка" width="44" height="44" loading="lazy" />
+                                </div>
+                                <p class="advantages-item__title">Риск-ориентированные подходы и снижение возможного негативного влияния на качество</p>
+                            </li>
+                            <li class="advantages-item">
+                                <div class="advantages-item__image">
+                                    <img src="./images/advantages-item-8.svg" alt="Иконка" width="44" height="44" loading="lazy" />
+                                </div>
+                                <p class="advantages-item__title">Планирование для обеспечения функционирования ФСК в соответствии с утвержденными требованиями</p>
+                            </li>
+                            <li class="advantages-item">
+                                <div class="advantages-item__image">
+                                    <img src="./images/advantages-item-9.svg" alt="Иконка" width="44" height="44" loading="lazy" />
+                                </div>
+                                <p class="advantages-item__title">Анализ результативности функционирования ФСК со стороны руководства с целью ее улучшения и совершенствования</p>
+                            </li>
+                            <li class="advantages-item">
+                                <div class="advantages-item__image">
+                                    <img src="./images/advantages-item-10.svg" alt="Иконка" width="44" height="44" loading="lazy" />
+                                </div>
+                                <p class="advantages-item__title">Поддержку руководства путем обеспечения необходимыми ресурсами для обеспечения соответствия ФСК заявленным требованиям.</p>
+                            </li>
+                        </ul>
+                        <div class="offer" data-lazy-desktop="./images/offer-bg-desktop.webp" data-lazy-mobile="./images/offer-bg-mobile.webp">
+                            <div class="offer-content">
+                                <h4 class="title-3">Карьера в НПО «Микроген»</h4>
+                                <div class="offer-content__text">
+                                    <p>Мы всегда открыты для талантливых специалистов. Отправьте резюме — возможно, мы ищем именно вас.</p>
+                                </div>
+                            </div>
+                            <a href="#!" target="_blank" rel="noopener noreferrer" class="base-button base-button--green">
+                                <span>Вакансии НПО «Микроген»</span>
+                            </a>
+                        </div>
+                        <ul class="download-files">
+                            <li>
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="download-file">
+                                    <div class="download-file__icon">
+                                        <img src="./images/download-file.svg" alt="Иконка" width="54" height="54" loading="lazy" />
+                                    </div>
+                                    <div class="download-file__info">
+                                        <p>ПОЛИТИКА В ОБЛАСТИ КАЧЕСТВА</p>
+                                        <span>.pdf, 500 KB</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="download-file">
+                                    <div class="download-file__icon">
+                                        <img src="./images/download-file.svg" alt="Иконка" width="54" height="54" loading="lazy" />
+                                    </div>
+                                    <div class="download-file__info">
+                                        <p>РУКОВОДСТВО ПО КАЧЕСТВУ</p>
+                                        <span>.pdf, 500 KB</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-inner">
+                    <div class="footer-top">
+                        <div class="footer-top__info">
+                            <div class="footer-top__brand" aria-label="Информация о компании">
+                                <a href="index.html" class="footer-top__logo">
+                                    <img src="./images/logo.png" width="247" height="42" loading="lazy" alt="Логотип" />
+                                </a>
+                                <div class="footer-top__description">
+                                    <h2>Национальный производитель иммунобиологических препаратов в России</h2>
+                                </div>
+                            </div>
+
+                            <div class="footer-top__blocks">
+                                <div class="footer-top__block" aria-label="Контактная информация">
+                                    <div class="footer-badge">
+                                        <h3 class="footer-badge__title">связаться с нами</h3>
+                                        <div class="footer-badge__icon">
+                                            <img src="./images/badge-9.svg" alt="Иконка телефона" width="18" height="18" loading="lazy" />
+                                        </div>
+                                    </div>
+                                    <div class="footer-top__contacts">
+                                        <a href="tel:+7 (495) 790-77-73">+7 (495) 790-77-73</a>
+                                        <p>ежедневно, 9.00-18.00</p>
+                                        <a href="mailto:info@microgen.ru">info@microgen.ru</a>
+                                    </div>
+                                    <ul class="footer-top__socials">
+                                        <li>
+                                            <a href="https://vk.com/" target="_blank" rel="noopener noreferrer" aria-label="Ссылка на VK">
+                                                <img src="./images/vk.svg" alt="Иконка VK" width="20" height="20" loading="lazy" />
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="footer-top__block" aria-label="Адрес компании">
+                                    <div class="footer-badge">
+                                        <h3 class="footer-badge__title">юридический адрес</h3>
+                                        <div class="footer-badge__icon">
+                                            <img src="./images/badge-11.svg" alt="Иконка локации" width="18" height="18" loading="lazy" />
+                                        </div>
+                                    </div>
+                                    <address class="footer-top__address">127473, г. Москва, 2-й Волконский переулок, д.10</address>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="footer-top__navs" aria-label="Навигация по сайту">
+                            <nav class="footer-top__nav">
+                                <div class="footer-badge">
+                                    <h3 class="footer-badge__title">Навигация</h3>
+                                    <div class="footer-badge__icon">
+                                        <img src="./images/badge-navigation.svg" alt="Иконка навигации" width="18" height="18" loading="lazy" />
+                                    </div>
+                                </div>
+                                <ul class="footer-top__menu">
+                                    <li><a href="index.html">Главная</a></li>
+                                    <li><a href="about.html">О компании</a></li>
+                                    <li><a href="manufacturing.html">Производство</a></li>
+                                    <li><a href="research.html">Наука</a></li>
+                                    <li><a href="press-center.html">Пресс-центр</a></li>
+                                    <li>
+                                        <a href="#!" target="_blank" rel="noopener noreferrer">Мобильное приложение</a>
+                                    </li>
+                                    <li>
+                                        <a href="drug-safety.html">Безопасность препаратов</a>
+                                    </li>
+                                    <li><a href="contacts.html">Контакты</a></li>
+                                </ul>
+                            </nav>
+                            <nav class="footer-top__nav footer-top__nav--production">
+                                <div class="footer-badge">
+                                    <h3 class="footer-badge__title">продукция</h3>
+                                    <div class="footer-badge__icon">
+                                        <img src="./images/badge-2.svg" alt="Иконка продукции" width="18" height="18" loading="lazy" />
+                                    </div>
+                                </div>
+                                <ul class="footer-top__menu">
+                                    <li><a href="category-products.html">Вакцины</a></li>
+                                    <li>
+                                        <a href="category-products.html">Аллергены, аллергоиды</a>
+                                    </li>
+                                    <li>
+                                        <a href="category-products.html">Анатоксины, токсины</a>
+                                    </li>
+                                    <li><a href="category-products.html">Бактериофаги</a></li>
+                                    <li><a href="category-products.html">Иммуноглобулины</a></li>
+                                    <li><a href="category-products.html">Препараты крови</a></li>
+                                    <li><a href="category-products.html">Сыворотки</a></li>
+                                    <li>
+                                        <a href="category-products.html">Питательные среды</a>
+                                    </li>
+                                    <li>
+                                        <a href="category-products.html">Медицинские изделия для диагностики IN VITRO</a>
+                                    </li>
+                                    <li><a href="category-products.html">Другие препараты</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <div class="footer-top__useful">
+                            <div class="footer-badge">
+                                <h3 class="footer-badge__title">полезные ссылки</h3>
+                                <div class="footer-badge__icon">
+                                    <img src="./images/badge-links.svg" alt="Иконка навигации" width="18" height="18" loading="lazy" />
+                                </div>
+                            </div>
+                            <ul class="footer-top__links">
+                                <li>
+                                    <a href="#!" target="_blank" rel="noopener noreferrer">
+                                        <img src="./images/nacimbio-logo.svg" width="228" height="42" alt="Логотип НАЦИМБИО" loading="lazy" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#!" target="_blank" rel="noopener noreferrer">
+                                        <img src="./images/rostec.svg" width="133" height="42" alt="Логотип НАЦИМБИО" loading="lazy" />
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#!" target="_blank" rel="noopener noreferrer">
+                                        <img src="./images/hotline.png" width="246" height="42" alt="Горячая линия" loading="lazy" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <p>© 2026 АО "НПО "Микроген". Все права защищены</p>
+
+                        <nav class="footer-bottom__nav" aria-label="Навигация по сайту">
+                            <ul>
+                                <li><a href="sitemap.html">Карта сайта</a></li>
+                                <li>
+                                    <a href="privacy-policy.html">Политика по обработке Персональных данных</a>
+                                </li>
+                                <li>
+                                    <a href="mobile-app-privacy.html">Политика конфиденциальности для мобильного приложения «ПРИВИВКИ — ЛИЧНЫЙ КАЛЕНДАРЬ»</a>
+                                </li>
+                                <li>
+                                    <a href="cookie-policy.html">Условия использования файлов cookie</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="./js/swiper-bundle.min.js"></script>
+        <script src="./js/choices.min.js"></script>
+        <script src="./js/index.js"></script>
+    </body>
+</html>

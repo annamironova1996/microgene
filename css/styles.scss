@@ -342,6 +342,11 @@ html {
     white-space: nowrap;
 }
 
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: fluid(6px, 8px);
+}
 .grid-3 {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
@@ -418,6 +423,11 @@ html {
         .title-content__text {
             max-width: max-content;
         }
+
+        .custom-list,
+        .custom-list * {
+            max-width: 100%;
+        }
     }
 }
 .title-content__text {
@@ -445,10 +455,18 @@ html {
 .content {
     display: flex;
     flex-direction: column;
-    gap: fluid(28px, 32px);
-}
-.content--small {
-    gap: fluid(18px, 28px);
+
+    &:not(.content--small),
+    &:not(.content--tiny) {
+        gap: fluid(28px, 32px);
+    }
+
+    &.content--small {
+        gap: fluid(18px, 28px);
+    }
+    &.content--tiny {
+        gap: fluid(18px, 20px);
+    }
 }
 .content-row {
     display: flex;
@@ -1011,6 +1029,12 @@ html {
 .swiper-slide {
     max-width: 100% !important;
     height: auto;
+}
+.swiper-auto {
+    overflow: visible;
+    .swiper-slide {
+        max-width: max-content !important;
+    }
 }
 .swiper-bullet__items {
     display: grid;
@@ -1864,6 +1888,16 @@ main {
     display: flex;
     flex-direction: column;
 
+    &.block-info--tiny {
+        width: fluid(240px, 420px);
+        min-height: fluid(208px, 214px);
+        gap: fluid(10px, 62px);
+
+        .block-info__header {
+            min-height: 56px;
+        }
+    }
+
     &.block-info--small {
         max-width: fluid(240px, 445px);
         min-height: fluid(300px, 262px);
@@ -2682,6 +2716,88 @@ main {
     }
 }
 
+// block-image
+.block-image {
+    border-radius: 14px;
+    width: 100%;
+    height: fluid(240px, 450px);
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+        border-radius: inherit;
+    }
+}
+
+// custom-list
+.custom-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    li {
+        background-color: var(--primary-blue);
+        padding-top: fluid(16px, 20px);
+        padding-left: fluid(30px, 34px);
+        padding-right: fluid(16px, 20px);
+        padding-bottom: fluid(16px, 20px);
+
+        position: relative;
+
+        &::before {
+            content: '';
+            height: 6px;
+            width: auto;
+            aspect-ratio: 1 / 1;
+            background-color: var(--secondary-solid);
+            border-radius: 50px;
+            position: absolute;
+            top: fluid(23px, 28px);
+            left: fluid(16px, 20px);
+        }
+    }
+}
+
+// download-files
+.download-files {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: fluid(10px, 20px);
+}
+.download-file {
+    display: flex;
+    align-items: center;
+    gap: fluid(14px, 16px);
+    padding: fluid(14px, 24px);
+    background: var(--base-white);
+    border-radius: 8px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+
+    span {
+        display: block;
+        font-weight: 300;
+        font-size: fluid(12px, 14px);
+        line-height: 143%;
+        text-transform: none;
+        margin-top: 5px;
+    }
+}
+.download-file__icon {
+    height: fluid(38px, 54px);
+    width: auto;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
 @media screen and (max-width: 1550px) {
     .responsibility-item {
         justify-content: space-between;
@@ -2747,6 +2863,10 @@ main {
         &.block-info--large {
             width: fluid(240px, 600px);
         }
+    }
+
+    .block-image {
+        width: fluid(280px, 600px);
     }
 }
 
@@ -2855,12 +2975,32 @@ main {
 }
 
 @media screen and (max-width: 910px) {
+    //base
+    .grid-2 {
+        grid-template-columns: 100%;
+    }
+
+    // modal
     .modal-content {
         grid-template-columns: 100%;
         width: calc(100% - 28px);
     }
     .modal-content__image {
         height: fluid(190px, 300px);
+    }
+
+    // advantages-list 
+    .advantages-list {
+        &.advantages-list--top {
+            .advantages-item {
+                align-items: flex-start;
+            }
+        }
+    }
+
+    // download-files
+    .download-files {
+        grid-template-columns: 100%;
     }
 }
 
@@ -3050,7 +3190,14 @@ main {
     .contact-badge__title {
         line-height: 133%;
     }
-   
+
+    // download-file
+    .download-file {
+        line-height: 143%;
+        span {
+            line-height: 117%;
+        }
+    }
 }
 
 @media screen and (max-width: 540px) {

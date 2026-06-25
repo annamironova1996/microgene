@@ -200,6 +200,39 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Слайдер (авто)
+    const swipers_auto = document.querySelectorAll('.swiper-auto');
+    if (swipers_auto) {
+        swipers_auto.forEach((swiper) => {
+            const parent = swiper.closest('section');
+            const previousButton = parent.querySelector('.slider-button--prev');
+            const nextButton = parent.querySelector('.slider-button--next');
+
+            new Swiper(swiper, {
+                slidesPerView: 'auto',
+                spaceBetween: 14,
+                navigation: {
+                    nextEl: nextButton,
+                    prevEl: previousButton,
+                },
+                breakpoints: {
+                    1640: {
+                        spaceBetween: 20,
+                        slidesPerView: 'auto',
+                    },
+                    1440: {
+                        spaceBetween: 18,
+                        slidesPerView: 'auto',
+                    },
+                    768: {
+                        spaceBetween: 16,
+                        slidesPerView: 'auto',
+                    },
+                },
+            });
+        });
+    }
+
     // Слайдер (3 слайда на главной)
     const swipers_3 = document.querySelectorAll('.swiper-3');
     if (swipers_3) {
