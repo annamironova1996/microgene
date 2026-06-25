@@ -423,11 +423,6 @@ html {
         .title-content__text {
             max-width: max-content;
         }
-
-        .custom-list,
-        .custom-list * {
-            max-width: 100%;
-        }
     }
 }
 .title-content__text {
@@ -455,11 +450,7 @@ html {
 .content {
     display: flex;
     flex-direction: column;
-
-    &:not(.content--small),
-    &:not(.content--tiny) {
-        gap: fluid(28px, 32px);
-    }
+    gap: fluid(28px, 32px);
 
     &.content--small {
         gap: fluid(18px, 28px);
@@ -2655,6 +2646,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: fluid(24px, 32px);
+    width: 100%;
 }
 .contact-badge {
     display: flex;
@@ -2698,6 +2690,7 @@ main {
         line-height: 150%;
         letter-spacing: -0.02em;
         color: var(--primary-solid);
+        text-transform: lowercase;
     }
 
     a {
@@ -2735,6 +2728,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    max-width: 100%;
 
     li {
         background-color: var(--primary-blue);
@@ -2796,6 +2790,49 @@ main {
         height: 100%;
         object-fit: cover;
     }
+}
+
+// gallery-item
+.gallery-items {
+    gap: fluid(14px, 20px);
+}
+.gallery-item {
+    border-radius: 10px;
+    padding: 16px 16px fluid(16px, 24px);
+    width: 100%;
+    min-height: fluid(330px, 484px);
+    background: var(--primary-blue);
+    display: flex;
+    flex-direction: column;
+    gap: fluid(16px, 24px);
+}
+.gallery-item__image {
+    display: contents;
+    width: 100%;
+    height: fluid(220px, 340px);
+    border-radius: 8px;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: inherit;
+    }
+}
+.gallery-item__title {
+    font-weight: 600;
+    font-size: fluid(18px, 24px);
+    line-height: 133%;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    color: var(--secondary-solid);
+}
+.gallery-item__info {
+    padding-left: fluid(0px, 7.5px);
+    padding-right: fluid(0px, 7.5px);
+    display: flex;
+    flex-direction: column;
+    gap: fluid(16px, 24px);
 }
 
 @media screen and (max-width: 1550px) {
@@ -2989,7 +3026,7 @@ main {
         height: fluid(190px, 300px);
     }
 
-    // advantages-list 
+    // advantages-list
     .advantages-list {
         &.advantages-list--top {
             .advantages-item {
@@ -3197,6 +3234,10 @@ main {
         span {
             line-height: 117%;
         }
+    }
+
+    .gallery-item__title {
+        line-height: 144%;
     }
 }
 
