@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // Кастомный селект для кол-ва новостей на странице
-        if(selectElement.closest('.show-select')) {
-             new Choices(selectElement, {
+        if (selectElement.closest('.show-select')) {
+            new Choices(selectElement, {
                 searchEnabled: false,
                 itemSelectText: '',
                 placeholder: false,
@@ -772,6 +772,63 @@ document.addEventListener('DOMContentLoaded', function () {
         return isValidDate;
     }
 
+    // Ограниченное кол-во табов
+    function initTabs() {
+        const tabsList = document.querySelectorAll('.tabs-list');
+
+        tabsList.forEach((tabs) => {
+            const oldButton = tabs.querySelector('.more');
+            if (oldButton) {
+                oldButton.closest('li').remove();
+            }
+
+            const items = tabs.querySelectorAll('li');
+            items.forEach((item) => {
+                item.style.display = '';
+                delete item.dataset.hidden;
+            });
+
+            let MAX_VISIBLE;
+            if (window.innerWidth > 991) {
+                MAX_VISIBLE = 23;
+            } else {
+                MAX_VISIBLE = 9;
+            }
+
+            if (items.length > MAX_VISIBLE) {
+                items.forEach((item, index) => {
+                    if (index >= MAX_VISIBLE) {
+                        item.style.display = 'none';
+                        item.dataset.hidden = 'true';
+                    }
+                });
+
+                const toggleLi = document.createElement('li');
+                const toggleButton = document.createElement('button');
+                toggleButton.textContent = 'Развернуть все теги';
+                toggleButton.className = 'more';
+                toggleLi.appendChild(toggleButton);
+                tabs.appendChild(toggleLi);
+
+                let isExpanded = false;
+
+                toggleButton.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    isExpanded = !isExpanded;
+
+                    const hiddenItems = tabs.querySelectorAll('li[data-hidden="true"]');
+                    hiddenItems.forEach((item) => {
+                        item.style.display = isExpanded ? '' : 'none';
+                    });
+
+                    toggleButton.textContent = isExpanded ? 'Скрыть теги' : 'Развернуть все теги';
+                });
+            }
+        });
+    }
+
+    initTabs();
+
     // Мобильное меню
     const headerMobileButton = document.querySelector('.header-mobile__button');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -912,6 +969,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Слайдер на экранах <= 1045
             initSwiperGridSwiper();
+
+            // Ограниченное кол-во табов
+            initTabs();
         }, 0);
     });
 });

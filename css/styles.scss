@@ -168,7 +168,8 @@ $fluid-max-width: 1840px !default;
         }
     }
     .tabs-list {
-        a:hover {
+        a:hover,
+        .more:hover {
             background-color: var(--secondary-blue);
         }
     }
@@ -3198,6 +3199,14 @@ main {
         &:active {
             background-color: var(--secondary-solid);
             color: var(--base-white);
+        }
+    }
+    .more {
+        color: var(--secondary-solid);
+
+        &:active {
+            background-color: var(--primary-blue);
+            color: var(--primary-solid-70);
         }
     }
 }
