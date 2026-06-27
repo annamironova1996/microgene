@@ -40,6 +40,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 shouldSort: false,
             });
         }
+
+        // Кастомный селект для кол-ва новостей на странице
+        if(selectElement.closest('.show-select')) {
+             new Choices(selectElement, {
+                searchEnabled: false,
+                itemSelectText: '',
+                placeholder: false,
+                placeholderValue: '',
+                shouldSort: false,
+            });
+        }
     });
 
     //Loading Lazy для фоновых изображений (комп и мобильная версия)
