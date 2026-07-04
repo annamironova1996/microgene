@@ -943,6 +943,54 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // открытие фильтров на странице товаров
+    const productsTopButton = document.querySelector('.products-top__button');
+    if (productsTopButton) {
+        productsTopButton.addEventListener('click', function () {
+            if (body.classList.contains('no-scroll')) {
+                body.classList.remove('no-scroll');
+            } else {
+                body.classList.add('no-scroll');
+            }
+            if (html.classList.contains('no-scroll')) {
+                html.classList.remove('no-scroll');
+            } else {
+                html.classList.add('no-scroll');
+            }
+
+            const filtration = document.querySelector('.filtration');
+            if (filtration.classList.contains('active')) {
+                filtration.classList.remove('active');
+            } else {
+                filtration.classList.add('active');
+            }
+        });
+    }
+
+    // закрытие фильтров на странице товара
+    const filtrationClose = document.querySelector('.filtration-close');
+    if (filtrationClose) {
+        filtrationClose.addEventListener('click', function () {
+            if (body.classList.contains('no-scroll')) {
+                body.classList.remove('no-scroll');
+            } else {
+                body.classList.add('no-scroll');
+            }
+            if (html.classList.contains('no-scroll')) {
+                html.classList.remove('no-scroll');
+            } else {
+                html.classList.add('no-scroll');
+            }
+
+            const filtration = document.querySelector('.filtration');
+            if (filtration.classList.contains('active')) {
+                filtration.classList.remove('active');
+            } else {
+                filtration.classList.add('active');
+            }
+        });
+    }
+
     // Изменения при изменении размера экрана
     let resizeTimer;
     window.addEventListener('resize', function () {
