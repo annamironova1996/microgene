@@ -991,6 +991,151 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // выбор даты на странице "Официальные документы"
+    function initDatepicker() {
+        const isMobile = window.innerWidth <= 991;
+
+        return new AirDatepicker('#datepicker_input', {
+            range: true,
+            isMobile: isMobile,
+            navTitles: {
+                days: 'MMMM <i>yyyy</i>',
+            },
+            locale: {
+                monthsShort: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+            },
+            onSelect: function ({ date, formattedDate, datepicker }) {
+                const selectedDates = datepicker.selectedDates;
+                const input = document.querySelector('.datepicker');
+
+                if (selectedDates && selectedDates.length > 0) {
+                    if (selectedDates.length === 2) {
+                        const date1 = formatDate(selectedDates[0]);
+                        const date2 = formatDate(selectedDates[1]);
+                        input.value = `${date1} - ${date2}`;
+                    } else if (selectedDates.length === 1) {
+                        input.value = formatDate(selectedDates[0]);
+                    }
+                }
+            },
+            buttons: [
+                {
+                    content: 'Сбросить',
+                    className: 'air-datepicker__reset',
+                    onClick: function (dp) {
+                        dp.clear();
+                    },
+                },
+                {
+                    content: 'Применить',
+                    className: 'air-datepicker__apply',
+                    onClick: function (dp) {
+                        dp.hide();
+                        console.log('Выбранные даты:', dp.selectedDates);
+                    },
+                },
+            ],
+        });
+    }
+
+    function formatDate(date) {
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}.${month}.${year}`;
+    }
+
+    let datepicker = initDatepicker();
+
+    function formatDate(date) {
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = date.getFullYear();
+        return `${day}.${month}.${year}`;
+    }
+
+    // открытие-закрытие селектов на странице "Официальные документы"
+    const buttons = document.querySelectorAll('.documents-table__button-open');
+    const isMobile = window.innerWidth <= 991;
+
+    if (buttons) {
+        buttons.forEach((button) => {
+            const parentInner = button.closest('.documents-table__inner');
+            const parentTh = parentInner ? parentInner.closest('th') : null;
+            const selectWrapper = parentTh ? parentTh.querySelector('.documents-table__select') : null;
+            const selectHidden = selectWrapper ? selectWrapper.querySelector('.documents-table__select-hidden') : null;
+            const selectButton = selectWrapper ? selectWrapper.querySelector('.documents-table__select-button') : null;
+
+            if (button && selectHidden && selectWrapper) {
+                button.addEventListener('click', function (e) {
+                    e.stopPropagation();
+
+                    // Закрываем другие открытые dropdown-ы
+                    document.querySelectorAll('.documents-table__select-hidden.active').forEach((el) => {
+                        if (el !== selectHidden) {
+                            el.classList.remove('active');
+                            const parentSelect = el.closest('.documents-table__select');
+                            if (parentSelect) {
+                                parentSelect.classList.remove('active');
+                            }
+                        }
+                    });
+
+                    // Переключаем текущий dropdown
+                    selectHidden.classList.toggle('active');
+
+                    // Добавляем/удаляем active у родительского .documents-table__select
+                    if (selectHidden.classList.contains('active')) {
+                        selectWrapper.classList.add('active');
+                    } else {
+                        selectWrapper.classList.remove('active');
+                    }
+                });
+            }
+
+            // Обработка клика по select-button на мобильных устройствах
+            if (isMobile && selectButton && selectHidden && selectWrapper) {
+                selectButton.addEventListener('click', function (e) {
+                    e.stopPropagation();
+
+                    // Закрываем другие открытые dropdown-ы
+                    document.querySelectorAll('.documents-table__select-hidden.active').forEach((el) => {
+                        if (el !== selectHidden) {
+                            el.classList.remove('active');
+                            const parentSelect = el.closest('.documents-table__select');
+                            if (parentSelect) {
+                                parentSelect.classList.remove('active');
+                            }
+                        }
+                    });
+
+                    // Переключаем текущий dropdown
+                    selectHidden.classList.toggle('active');
+
+                    // Добавляем/удаляем active у родительского .documents-table__select
+                    if (selectHidden.classList.contains('active')) {
+                        selectWrapper.classList.add('active');
+                    } else {
+                        selectWrapper.classList.remove('active');
+                    }
+                });
+            }
+        });
+
+        // Закрытие при клике вне
+        document.addEventListener('click', function (e) {
+            document.querySelectorAll('.documents-table__select-hidden.active').forEach((el) => {
+                const parentSelect = el.closest('.documents-table__select');
+                // Проверяем, что клик был вне родительского .documents-table__select
+                // и не по кнопке открытия
+                if (parentSelect && !parentSelect.contains(e.target) && !e.target.closest('.documents-table__button-open')) {
+                    el.classList.remove('active');
+                    parentSelect.classList.remove('active');
+                }
+            });
+        });
+    }
+
     // Изменения при изменении размера экрана
     let resizeTimer;
     window.addEventListener('resize', function () {
@@ -1020,6 +1165,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Ограниченное кол-во табов
             initTabs();
+
+            const newIsMobile = window.innerWidth <= 991;
+
+            if (datepicker && datepicker.isMobile !== newIsMobile) {
+                datepicker.destroy();
+                datepicker = initDatepicker();
+            }
         }, 0);
     });
 });
