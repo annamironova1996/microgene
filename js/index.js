@@ -993,6 +993,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // выбор даты на странице "Официальные документы"
     function initDatepicker() {
+        const input = document.querySelector('#datepicker_input');
+
+        if (!input) return null;
+        
         const isMobile = window.innerWidth <= 991;
 
         return new AirDatepicker('#datepicker_input', {
@@ -1070,7 +1074,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 button.addEventListener('click', function (e) {
                     e.stopPropagation();
 
-                    // Закрываем другие открытые dropdown-ы
                     document.querySelectorAll('.documents-table__select-hidden.active').forEach((el) => {
                         if (el !== selectHidden) {
                             el.classList.remove('active');
@@ -1081,10 +1084,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                     });
 
-                    // Переключаем текущий dropdown
                     selectHidden.classList.toggle('active');
 
-                    // Добавляем/удаляем active у родительского .documents-table__select
                     if (selectHidden.classList.contains('active')) {
                         selectWrapper.classList.add('active');
                     } else {
@@ -1093,12 +1094,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
             }
 
-            // Обработка клика по select-button на мобильных устройствах
             if (isMobile && selectButton && selectHidden && selectWrapper) {
                 selectButton.addEventListener('click', function (e) {
                     e.stopPropagation();
 
-                    // Закрываем другие открытые dropdown-ы
                     document.querySelectorAll('.documents-table__select-hidden.active').forEach((el) => {
                         if (el !== selectHidden) {
                             el.classList.remove('active');
@@ -1109,10 +1108,8 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                     });
 
-                    // Переключаем текущий dropdown
                     selectHidden.classList.toggle('active');
 
-                    // Добавляем/удаляем active у родительского .documents-table__select
                     if (selectHidden.classList.contains('active')) {
                         selectWrapper.classList.add('active');
                     } else {
@@ -1122,12 +1119,10 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Закрытие при клике вне
         document.addEventListener('click', function (e) {
             document.querySelectorAll('.documents-table__select-hidden.active').forEach((el) => {
                 const parentSelect = el.closest('.documents-table__select');
-                // Проверяем, что клик был вне родительского .documents-table__select
-                // и не по кнопке открытия
+
                 if (parentSelect && !parentSelect.contains(e.target) && !e.target.closest('.documents-table__button-open')) {
                     el.classList.remove('active');
                     parentSelect.classList.remove('active');
