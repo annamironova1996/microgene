@@ -4512,7 +4512,7 @@ ol.custom-list {
     height: fluid(220px, 400px);
 
     img {
-        width: 100%;
+        max-width: 100%;
         max-height: 100%;
         object-fit: cover;
     }
@@ -4822,6 +4822,13 @@ ol.custom-list {
                 }
             }
         }
+    }
+}
+
+@media screen and (max-width: 1867px) {
+    .gallery-block__image img {
+        max-width: inherit;
+        width: 100%;
     }
 }
 
