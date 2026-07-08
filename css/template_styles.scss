@@ -368,6 +368,7 @@ $fluid-max-width: 1840px !default;
         .choices__list[aria-expanded] .choices__item {
             font-family: var(--second-family);
         }
+    
     }
 }
 .header-mobile__button {
@@ -737,15 +738,17 @@ $fluid-max-width: 1840px !default;
 .footer-top__links {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: fluid(24px, 32px);
+
     a {
-        display: table-cell;
-        height: fluid(32px, 42px);
+        display: block;
+        max-height: fluid(32px, 42px);
         width: 100%;
 
         img {
-            height: 100%;
-            width: 100%;
+            max-height: inherit;
+            width: auto;
             object-fit: contain;
         }
     }

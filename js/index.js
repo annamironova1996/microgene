@@ -449,7 +449,7 @@ document.addEventListener('DOMContentLoaded', function () {
         modal.classList.remove('active');
         setTimeout(() => {
             modal.setAttribute('hidden', true);
-        }, 100);
+        }, 0);
     }
 
     // Загрузка файлов в форме
@@ -996,7 +996,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const input = document.querySelector('#datepicker_input');
 
         if (!input) return null;
-        
+
         const isMobile = window.innerWidth <= 991;
 
         return new AirDatepicker('#datepicker_input', {
@@ -1062,6 +1062,111 @@ document.addEventListener('DOMContentLoaded', function () {
     const buttons = document.querySelectorAll('.documents-table__button-open');
     const isMobile = window.innerWidth <= 991;
 
+    function truncateTextToFit(element, text) {
+        if (!element || !text) return text;
+
+        if (text.length === 0) return '';
+
+        if (!element.dataset.fullText) {
+            element.dataset.fullText = text;
+        }
+
+        const fullText = element.dataset.fullText;
+
+        const computedStyle = window.getComputedStyle(element);
+        const paddingLeft = parseFloat(computedStyle.paddingLeft) || 0;
+        const paddingRight = parseFloat(computedStyle.paddingRight) || 0;
+        const borderLeft = parseFloat(computedStyle.borderLeftWidth) || 0;
+        const borderRight = parseFloat(computedStyle.borderRightWidth) || 0;
+
+        const availableWidth = element.clientWidth - paddingLeft - paddingRight - borderLeft - borderRight;
+
+        if (availableWidth <= 0) return fullText;
+
+        const measure = document.createElement('span');
+        measure.style.visibility = 'hidden';
+        measure.style.position = 'absolute';
+        measure.style.whiteSpace = 'nowrap';
+        measure.style.font = computedStyle.font;
+        measure.style.fontSize = computedStyle.fontSize;
+        measure.style.fontFamily = computedStyle.fontFamily;
+        measure.style.fontWeight = computedStyle.fontWeight;
+        measure.style.letterSpacing = computedStyle.letterSpacing;
+        document.body.appendChild(measure);
+
+        measure.textContent = fullText;
+        if (measure.offsetWidth <= availableWidth) {
+            document.body.removeChild(measure);
+            return fullText;
+        }
+
+        let left = 0;
+        let right = fullText.length;
+        let bestLength = 0;
+
+        while (left <= right) {
+            const mid = Math.floor((left + right) / 2);
+            const testText = fullText.substring(0, mid) + '...';
+            measure.textContent = testText;
+
+            if (measure.offsetWidth <= availableWidth) {
+                bestLength = mid;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        document.body.removeChild(measure);
+
+        if (bestLength === 0) return '...';
+        return fullText.substring(0, bestLength) + '...';
+    }
+
+    function updateSelectButton(selectButton) {
+        if (!selectButton) return;
+
+        const selectHidden = selectButton.closest('.documents-table__select')?.querySelector('.documents-table__select-hidden');
+
+        if (!selectHidden) return;
+
+        const selectedInputs = selectHidden.querySelectorAll('input[type="checkbox"]:checked, input[type="radio"]:checked');
+
+        let selectedTexts = [];
+        selectedInputs.forEach((input) => {
+            const label = selectHidden.querySelector(`label[for="${input.id}"]`);
+            if (label) {
+                const labelText = label.textContent.trim();
+                if (labelText) {
+                    selectedTexts.push(labelText);
+                }
+            } else {
+                const value = input.value || input.dataset.label;
+                if (value) {
+                    selectedTexts.push(value);
+                }
+            }
+        });
+
+        let buttonText = '';
+        if (selectedTexts.length === 0) {
+            buttonText = selectButton.dataset.placeholder || 'Выберите';
+        } else {
+            buttonText = selectedTexts.join(', ');
+        }
+
+        selectButton.dataset.fullText = buttonText;
+
+        const truncated = truncateTextToFit(selectButton, buttonText);
+        selectButton.textContent = truncated;
+    }
+
+    function updateAllSelectButtons() {
+        document.querySelectorAll('.documents-table__select-button').forEach((button) => {
+            updateSelectButton(button);
+        });
+    }
+
     if (buttons) {
         buttons.forEach((button) => {
             const parentInner = button.closest('.documents-table__inner');
@@ -1069,6 +1174,22 @@ document.addEventListener('DOMContentLoaded', function () {
             const selectWrapper = parentTh ? parentTh.querySelector('.documents-table__select') : null;
             const selectHidden = selectWrapper ? selectWrapper.querySelector('.documents-table__select-hidden') : null;
             const selectButton = selectWrapper ? selectWrapper.querySelector('.documents-table__select-button') : null;
+
+            if (selectButton) {
+                if (!selectButton.dataset.placeholder && selectButton.textContent.trim()) {
+                    selectButton.dataset.placeholder = selectButton.textContent.trim();
+                }
+                updateSelectButton(selectButton);
+            }
+
+            if (selectHidden) {
+                const inputs = selectHidden.querySelectorAll('input[type="checkbox"], input[type="radio"]');
+                inputs.forEach((input) => {
+                    input.addEventListener('change', function () {
+                        updateSelectButton(selectButton);
+                    });
+                });
+            }
 
             if (button && selectHidden && selectWrapper) {
                 button.addEventListener('click', function (e) {
@@ -1167,6 +1288,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 datepicker.destroy();
                 datepicker = initDatepicker();
             }
+
+            // Выбор и городов на странице документов
+            updateAllSelectButtons();
         }, 0);
     });
 });
