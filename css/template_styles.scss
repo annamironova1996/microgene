@@ -326,6 +326,7 @@ $fluid-max-width: 1840px !default;
         letter-spacing: -0.01em;
         outline: none;
         color: var(--primary-solid);
+        background-color: var(--base-white);
 
         &::placeholder {
             opacity: 0.5;
@@ -407,7 +408,7 @@ $fluid-max-width: 1840px !default;
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    min-height: calc(100vh - 78px);
+    min-height: calc(100svh - 78px);
     padding-bottom: 20px;
     padding-top: 8px;
 }

@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 placeholder: false,
                 placeholderValue: '',
                 shouldSort: false,
+                position: 'bottom',
             });
 
             const options = selectElement.options;
@@ -38,6 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 placeholder: true,
                 placeholderValue: 'Выберите из списка',
                 shouldSort: false,
+                position: 'bottom',
             });
         }
 
@@ -49,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 placeholder: false,
                 placeholderValue: '',
                 shouldSort: false,
+                position: 'bottom',
             });
         }
     });
@@ -922,19 +925,39 @@ document.addEventListener('DOMContentLoaded', function () {
                     const body = content.querySelector('[data-toggle-hidden]');
                     if (content && body) {
                         if (content.classList.contains('active')) {
+                            const currentHeight = body.scrollHeight;
+                            body.style.maxHeight = currentHeight + 'px';
+                            body.style.overflow = 'hidden';
+
+                            void body.offsetHeight;
+
                             body.style.maxHeight = '0';
                             body.style.opacity = '0';
+
                             setTimeout(() => {
                                 body.setAttribute('hidden', true);
-                            }, 300);
+                                body.style.maxHeight = '';
+                                body.style.overflow = '';
+                            }, 350);
+
                             content.classList.remove('active');
                         } else {
                             body.removeAttribute('hidden');
+                            body.style.display = '';
+                            body.style.maxHeight = '0';
+                            body.style.opacity = '0';
+                            body.style.overflow = 'hidden';
 
-                            requestAnimationFrame(() => {
-                                body.style.maxHeight = body.scrollHeight + 'px';
-                                body.style.opacity = '1';
-                            });
+                            void body.offsetHeight;
+
+                            const fullHeight = body.scrollHeight;
+                            body.style.maxHeight = fullHeight + 'px';
+                            body.style.opacity = '1';
+
+                            setTimeout(() => {
+                                body.style.overflow = '';
+                            }, 350);
+
                             content.classList.add('active');
                         }
                     }

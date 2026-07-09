@@ -287,6 +287,41 @@ $fluid-max-width: 1840px !default;
             }
         }
     }
+    .geography-grid {
+        .geography-item {
+            &:hover {
+                &::after {
+                    opacity: 1;
+                }
+
+                .geography-item__info,
+                .geography-item__title {
+                    color: var(--base-white);
+                }
+                .geography-item__list {
+                    li {
+                        color: var(--base-white);
+                        &::before {
+                            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='21' height='21' viewBox='0 0 21 21' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cg opacity='0.6'%3e%3cpath d='M10.5 19.25C15.3324 19.25 19.25 15.3324 19.25 10.5C19.25 5.66751 15.3324 1.75 10.5 1.75C5.66751 1.75 1.75 5.66751 1.75 10.5C1.75 15.3324 5.66751 19.25 10.5 19.25ZM15.275 8.27497L9.625 13.9249L5.94378 10.2437L7.18122 9.00629L9.625 11.4501L14.0375 7.03753L15.275 8.27497Z' fill='white' /%3e%3c/g%3e%3c/svg%3e");
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .download-file {
+        &:hover {
+            p {
+                background-color: var(--primary-blue);
+            }
+        }
+
+        p {
+            border-radius: 4px;
+            background-color: var(--base-white);
+            transition: background-color 0.15s ease;
+        }
+    }
 }
 
 // base
@@ -360,11 +395,7 @@ html {
     .choices.is-open {
         background-color: var(--primary-blue);
     }
-    .choices__list--dropdown,
-    .choices__list[aria-expanded] {
-        box-shadow: none;
-        background-color: transparent;
-    }
+
     .is-open.choices__list--dropdown,
     .is-active.choices__list[aria-expanded] {
         background-color: var(--primary-blue);
@@ -372,7 +403,6 @@ html {
         border: none;
         top: calc(100% + 2px);
         padding: 4px !important;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
     }
 
     .choices__list--dropdown .choices__item--selectable.is-highlighted,
@@ -584,6 +614,10 @@ html {
     }
     &.content--tiny {
         gap: fluid(18px, 20px);
+
+        .title-content__text {
+            max-width: max-content;
+        }
     }
 
     &.content--large {
@@ -1938,13 +1972,34 @@ html {
         background-color: var(--primary-blue);
         max-width: 100%;
         min-height: fluid(464px, 560px);
+        position: relative;
+
+        &::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../images/geography-item-active.webp');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            border-radius: inherit;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 0.15s ease;
+        }
     }
     .geography-item__image {
+        position: relative;
         height: fluid(180px, 210px);
+        z-index: 1;
     }
     .geography-item__info {
+        position: relative;
         padding-left: fluid(0px, 8px);
         padding-right: fluid(0px, 8px);
+        z-index: 1;
     }
 }
 .geography-item {
@@ -2146,8 +2201,8 @@ html {
 }
 .news-item__date {
     padding-left: 13px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: fluid(6px, 8px);
+    padding-bottom: fluid(6px, 8px);
     border-left: 1px solid var(--primary-border-color);
     font-size: fluid(13px, 14px);
     line-height: 143%;
@@ -2794,7 +2849,7 @@ main {
         height: fluid(48px, 64px);
         border: none;
         background: var(--base-white);
-        border-radius: 8px;
+        border-radius: 8px !important;
         padding: 4px;
         min-height: max-content;
     }
@@ -2808,6 +2863,25 @@ main {
         margin-top: 0px;
         border-radius: 8px;
         top: calc(100% + 2px);
+    }
+    .choices__list {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+    .choices__list::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        height: 0;
+        background: transparent;
+    }
+    .choices__list::-webkit-scrollbar-thumb {
+        background: transparent;
+    }
+    .choices__list::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    .choices__list {
+        -webkit-overflow-scrolling: touch;
     }
     .choices__list--dropdown .choices__item,
     .choices__list[aria-expanded] .choices__item {
@@ -3030,6 +3104,10 @@ main {
     display: flex;
     flex-direction: column;
     gap: fluid(8px, 10px);
+
+    &.contacts--enterprise {
+        gap: fluid(8px, 20px);
+    }
 }
 .contacts-columns {
     display: grid;
@@ -3042,6 +3120,7 @@ main {
     padding: fluid(16px, 24px);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: fluid(24px, 42px);
     width: 100%;
 }
@@ -3088,7 +3167,7 @@ main {
         }
     }
 }
-.contacts.contacts--enterprise {
+.contacts {
     .contact-info {
         a,
         address {
@@ -3097,6 +3176,9 @@ main {
             line-height: 150%;
             letter-spacing: -0.02em;
             color: var(--primary-solid);
+        }
+
+        a {
             text-transform: lowercase;
         }
 
@@ -3106,11 +3188,20 @@ main {
             gap: 5px;
         }
     }
-    .contacts-columns {
-        gap: fluid(8px, 20px);
+    &.contacts--page {
+        .contact-info {
+            ul {
+                gap: 20px;
+            }
+        }
     }
-    .contact {
-        gap: fluid(24px, 32px);
+    &:not(.contacts--page) {
+        .contacts-columns {
+            gap: fluid(8px, 20px);
+        }
+        .contact {
+            gap: fluid(24px, 32px);
+        }
     }
     .contacts {
         gap: fluid(8px, 20px);
@@ -3139,7 +3230,7 @@ main {
     flex-direction: column;
     gap: fluid(28px, 40px);
 }
-.contact-info__phone {
+.contacts .contact-info__phone {
     font-weight: 300;
     font-size: fluid(13px, 15px);
     line-height: 147%;
@@ -3155,6 +3246,7 @@ main {
         letter-spacing: -0.02em;
         text-transform: uppercase;
         color: inherit;
+        max-width: max-content;
     }
 }
 .contact-info__mail {
@@ -3259,7 +3351,7 @@ main {
     img {
         width: 100%;
         height: 100%;
-        object-fit: fill;
+        object-fit: cover;
         border-radius: inherit;
     }
 }
@@ -3360,6 +3452,7 @@ ol.custom-list {
     font-weight: 500;
     letter-spacing: -0.01em;
     text-transform: uppercase;
+    height: 100%;
 
     span {
         display: block;
@@ -3368,6 +3461,18 @@ ol.custom-list {
         line-height: 143%;
         text-transform: none;
         margin-top: 5px;
+    }
+
+    &:active {
+        p {
+            background-color: var(--primary-blue);
+        }
+    }
+
+    p {
+        border-radius: 4px;
+        background-color: var(--base-white);
+        transition: background-color 0.15s ease;
     }
 }
 .download-file__icon {
@@ -3395,6 +3500,7 @@ ol.custom-list {
     background: var(--primary-blue);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: fluid(16px, 24px);
 }
 .gallery-item__image {
@@ -4979,7 +5085,7 @@ ol.custom-list {
         &.active {
             left: 0%;
             overflow: auto;
-            max-height: 100vh;
+            max-height: 100svh;
 
             &::-webkit-scrollbar {
                 width: 0;
@@ -5064,8 +5170,7 @@ ol.custom-list {
                     left: 10px;
                     top: -8px;
                     height: 18px;
-                    width: auto;
-                    aspect-ratio: 1 / 1;
+                    width: 18px;
                     background: var(--base-white);
                     border-radius: 50px;
                     border: 5px solid var(--secondary-solid);
@@ -5133,7 +5238,8 @@ ol.custom-list {
     .bottom-row {
         justify-content: center;
     }
-    .custom-list {
+    ul.custom-list,
+    ol.custom-list {
         &.custom-list--grid {
             grid-template-columns: 100%;
         }
@@ -5198,6 +5304,10 @@ ol.custom-list {
         border-radius: 14px;
         width: fluid(280px, 400px);
         height: fluid(280px, 400px);
+
+        &.active {
+            border-color: var(--swiper-bullet);
+        }
     }
     .simple-product__title--desktop {
         display: none;
@@ -5487,6 +5597,9 @@ ol.custom-list {
         tr:first-child {
             border-top: none;
         }
+    }
+    .documents-table__button-open {
+        color: var(--primary-solid-70) !important;
     }
     .air-datepicker-global-container .air-datepicker.-active-:not(.-custom-position-) {
         position: fixed;
@@ -5787,7 +5900,7 @@ ol.custom-list {
     }
 
     // contacts
-    .contact-info__phone {
+    .contacts .contact-info__phone {
         letter-spacing: 0;
         a {
             line-height: 142%;
