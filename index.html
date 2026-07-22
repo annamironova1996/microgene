@@ -283,17 +283,11 @@
             <!-- Баннер -->
             <section class="banner main-banner">
                 <div class="container">
-                    <div class="banner-inner">
-                        <style>
-                            .banner-inner {
-                                background-image: url('./images/main-banner-desktop.webp');
-                            }
-                            @media screen and (max-width: 540px) {
-                                .banner-inner {
-                                    background-image: url('./images/main-banner-mobile.webp');
-                                }
-                            }
-                        </style>
+                    <div class="banner-inner video-wrapper">
+                        <!-- Обратите внимание, для этой страницы подключается скрип canvas.js -->
+                        <div class="loading" id="loading"></div>
+                        <canvas class="sequence-canvas" id="sequenceCanvas"></canvas>
+
                         <!-- Заголовок страницы для SEO (нужно заменить текст на нужный для SEO) -->
                         <h1 class="visually-hidden">Микроген</h1>
                         <!-- здесь установила класс break-word для переноса слова как на макете  -->
@@ -1081,5 +1075,8 @@
         <script src="./js/swiper-bundle.min.js"></script>
         <script src="./js/choices.min.js"></script>
         <script src="./js/index.js"></script>
+
+        <!-- Подключать этот скрипт только на главной странице -->
+        <script src="./js/canvas.js"></script>
     </body>
 </html>
