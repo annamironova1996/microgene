@@ -5,7 +5,7 @@
         frameCount: 158,
         frameRate: 24,
         framePath: (index) => `./frames/frame_${String(index).padStart(6, '0')}.jpg`,
-        loop: true,
+        loop: false,
         sourceWidth: 1916,
         sourceHeight: 858,
     };
