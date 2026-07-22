@@ -132,7 +132,9 @@ $fluid-max-width: 1840px !default;
 
 // header
 .header {
+    position: relative;
     padding: fluid(14px, 29px) 0;
+    z-index: 10;
 
     &:has(.header-mobile.active) {
         .header-mobile__button {
