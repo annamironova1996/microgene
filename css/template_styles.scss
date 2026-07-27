@@ -64,13 +64,6 @@ $fluid-max-width: 1840px !default;
     }
 
     // footer
-    .footer-top__contacts {
-        a {
-            &:hover {
-                background-color: var(--base-white);
-            }
-        }
-    }
     .footer-top__socials {
         a {
             &:hover {
@@ -94,6 +87,13 @@ $fluid-max-width: 1840px !default;
             }
         }
     }
+    .footer-top__block {
+        a {
+            &:hover {
+                color: var(--secondary-solid);
+            }
+        }
+    }
 }
 
 //base
@@ -109,7 +109,7 @@ $fluid-max-width: 1840px !default;
     line-height: 154%;
     text-transform: uppercase;
     background: var(--base-white);
-    padding: 6px 18px;
+    padding: 6px fluid(10px, 18px);
     border-radius: 4px;
     height: 100%;
     color: var(--secondary-solid);
@@ -639,12 +639,12 @@ $fluid-max-width: 1840px !default;
 //footer
 .footer {
     margin-top: fluid(35px, 70px);
-    margin-bottom: fluid(20px, 10px);
+    margin-bottom: fluid(64px, 70px);
 }
 .footer-inner {
     display: flex;
     flex-direction: column;
-    row-gap: fluid(40px, 36px);
+    row-gap: 40px;
     padding-top: fluid(20px, 80px);
     padding-bottom: fluid(20px, 40px);
     padding-left: fluid(14px, 40px);
@@ -661,6 +661,7 @@ $fluid-max-width: 1840px !default;
 }
 .footer-top__info {
     margin-right: auto;
+    column-gap: fluid(20px, 30px);
     max-width: fluid(304px, 460px);
 }
 .footer-top__brand {
@@ -763,37 +764,20 @@ $fluid-max-width: 1840px !default;
     display: flex;
     flex-direction: column;
     row-gap: fluid(16px, 18px);
-}
-.footer-top__contacts {
-    font-weight: 300;
-    font-size: fluid(13px, 15px);
-    line-height: 147%;
+
+    font-weight: 600;
+    font-size: fluid(14px, 18px);
+    line-height: 133%;
+    letter-spacing: -0.02em;
     color: var(--primary-solid);
-    letter-spacing: 0rem;
-
-    a[href^='tel:'] {
-        font-size: fluid(24px, 30px);
-        line-height: 133%;
-        text-transform: uppercase;
-        margin-bottom: 6px;
-    }
-
-    a[href^='mailto:'] {
-        font-size: fluid(16px, 20px);
-        line-height: 140%;
-        margin-top: fluid(16px, 18px);
-    }
 
     a {
-        display: block;
-        max-width: max-content;
-        border-radius: 4px;
-        font-weight: 600;
-        letter-spacing: -0.02em;
-        transition: background-color 0.3s ease;
+        font-size: fluid(16px, 18px);
+        color: inherit;
+        transition: color 0.3s ease;
 
         &:active {
-            background-color: var(--base-white);
+            color: var(--secondary-solid);
         }
     }
 }
@@ -821,12 +805,6 @@ $fluid-max-width: 1840px !default;
         transition: transform 0.3s ease;
     }
 }
-.footer-top__address {
-    font-weight: 600;
-    font-size: fluid(16px, 20px);
-    line-height: 139%;
-    letter-spacing: -0.02em;
-}
 .footer-bottom {
     border-top: 1px solid var(--primary-border-color);
     padding-top: fluid(15px, 19px);
@@ -845,10 +823,12 @@ $fluid-max-width: 1840px !default;
 .footer-bottom__nav {
     ul {
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
+        flex-wrap: wrap;
+        column-gap: fluid(6px, 20px);
         row-gap: fluid(6px, 8px);
+        max-width: 1050px;
     }
     a {
         display: inline-block;
@@ -963,16 +943,6 @@ $fluid-max-width: 1840px !default;
         line-height: 141%;
         letter-spacing: -0.01rem;
     }
-    .footer-top__contacts {
-        line-height: 150%;
-
-        a[href^='tel:'] {
-            line-height: 140%;
-        }
-        a[href^='mailto:'] {
-            line-height: 150%;
-        }
-    }
     .footer-top__description {
         line-height: 130%;
     }
@@ -984,11 +954,14 @@ $fluid-max-width: 1840px !default;
     .footer-top__nav {
         width: 100%;
     }
-    .footer-top__address {
-        line-height: 163%;
-    }
     .footer-bottom {
         line-height: 138%;
+    }
+    .footer-top__block {
+        a[href^='tel:'] {
+            line-height: 150%;
+        }
+        line-height: 143%;
     }
 }
 
@@ -999,5 +972,11 @@ $fluid-max-width: 1840px !default;
     }
     .header-search__modal.active {
         top: calc(100% + 16px);
+    }
+
+    // footer
+    .footer-top__navs {
+        justify-content: space-between;
+        width: 100%;
     }
 }
