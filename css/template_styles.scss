@@ -58,7 +58,7 @@ $fluid-max-width: 1840px !default;
     .header-brand__logos {
         a {
             &:hover {
-                opacity: 1;
+                opacity: 0.9;
             }
         }
     }
@@ -184,11 +184,11 @@ $fluid-max-width: 1840px !default;
     gap: fluid(10px, 20px);
 
     a {
-        opacity: 0.8;
+        opacity: 1;
         transition: opacity 0.2s ease;
 
         &:active {
-            opacity: 1;
+            opacity: 0.9;
         }
     }
 }
