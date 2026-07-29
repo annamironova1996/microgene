@@ -644,7 +644,7 @@ $fluid-max-width: 1840px !default;
 .footer-inner {
     display: flex;
     flex-direction: column;
-    row-gap: 40px;
+    row-gap: fluid(38px, 40px);
     padding-top: fluid(20px, 80px);
     padding-bottom: fluid(20px, 40px);
     padding-left: fluid(14px, 40px);
@@ -775,6 +775,10 @@ $fluid-max-width: 1840px !default;
         font-size: fluid(16px, 18px);
         color: inherit;
         transition: color 0.3s ease;
+
+         &[href^="mailto:"] {
+             font-size: fluid(14px, 18px);
+         }
 
         &:active {
             color: var(--secondary-solid);

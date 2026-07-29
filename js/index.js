@@ -1275,6 +1275,109 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // Создание модального окна при клике на кнопку "подробнее"
+    const modalOpenButtons = document.querySelectorAll('.trend-item__info-more');
+
+    modalOpenButtons.forEach((button) => {
+        button.addEventListener('click', function () {
+            const modalOverlay = document.createElement('div');
+            modalOverlay.className = 'modal';
+
+            const modal = document.createElement('div');
+            modal.className = 'modal-content';
+
+            const modalWrapper = document.createElement('div');
+            modalWrapper.className = 'trend';
+
+            modal.appendChild(modalWrapper);
+            modalOverlay.appendChild(modal);
+            document.body.appendChild(modalOverlay);
+
+            const originalTrend = this.closest('.trend-item');
+            const clone = originalTrend.cloneNode(true);
+
+            const moreBtn = clone.querySelector('.trend-item__info-more');
+            if (moreBtn) {
+                moreBtn.remove();
+            }
+
+            const infoTop = clone.querySelector('.trend-item__info-top');
+            const closeModalBtn = document.createElement('button');
+            closeModalBtn.className = 'trend-item__info-close';
+            closeModalBtn.setAttribute('aria-label', 'Закрыть модальное окно');
+            infoTop.appendChild(closeModalBtn);
+
+            const infoBlock = clone.querySelector('.trend-item__info');
+            const closeButton = document.createElement('button');
+            closeButton.type = 'button';
+            closeButton.className = 'base-button base-button--blue trend-item__close';
+
+            const closeButtonSpan = document.createElement('span');
+            closeButtonSpan.textContent = 'Вернуться на страницу';
+            closeButton.appendChild(closeButtonSpan);
+
+            infoBlock.appendChild(closeButton);
+
+            const imageElement = clone.querySelector('.trend-item__image');
+            if (imageElement && window.innerWidth <= 991) {
+                const infoTopElement = clone.querySelector('.trend-item__info-top');
+                if (infoTopElement && infoTopElement.parentNode) {
+                    infoTopElement.parentNode.insertBefore(imageElement, infoTopElement.nextSibling);
+                }
+            }
+
+            modalWrapper.innerHTML = '';
+            modalWrapper.appendChild(clone);
+
+            const scrollY = window.scrollY;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${scrollY}px`;
+            document.body.style.width = '100%';
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+
+            modalOverlay.classList.add('active');
+
+            const contentElement = clone.querySelector('.trend-item__info-content');
+            if (contentElement) {
+                new SimpleBar(contentElement, {
+                    autoHide: true,
+                    forceVisible: 'y',
+                });
+            }
+
+            function closeModal() {
+                modalOverlay.classList.remove('active');
+
+                document.body.style.position = '';
+                document.body.style.top = '';
+                document.body.style.width = '';
+                document.body.style.overflow = '';
+                document.documentElement.style.overflow = '';
+                window.scrollTo(0, scrollY);
+
+                modalOverlay.remove();
+                document.removeEventListener('keydown', escapeHandler);
+            }
+
+            closeButton.addEventListener('click', closeModal);
+            closeModalBtn.addEventListener('click', closeModal);
+
+            modalOverlay.addEventListener('click', function (e) {
+                if (e.target === modalOverlay) {
+                    closeModal();
+                }
+            });
+
+            const escapeHandler = function (e) {
+                if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                    closeModal();
+                }
+            };
+            document.addEventListener('keydown', escapeHandler);
+        });
+    });
+
     // Изменения при изменении размера экрана
     let resizeTimer;
     window.addEventListener('resize', function () {
