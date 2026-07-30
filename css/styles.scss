@@ -1054,7 +1054,7 @@ html {
     padding-bottom: fluid(35px, 71px);
 
     .title-1 {
-        max-width: 1220px;
+        max-width: 1218px;
     }
 }
 
@@ -2440,6 +2440,12 @@ main {
             filter: brightness(0) saturate(100%) invert(1) brightness(100%);
         }
     }
+
+    &:not(.block-info--transform-none) {
+        .block-info__title {
+            text-transform: uppercase;
+        }
+    }
 }
 .block-info__header {
     display: flex;
@@ -2452,7 +2458,6 @@ main {
     font-size: fluid(18px, 24px);
     line-height: 117%;
     letter-spacing: -0.02em;
-    text-transform: uppercase;
 }
 .block-info__image {
     height: fluid(42px, 56px);
@@ -3351,6 +3356,32 @@ main {
         line-height: 150%;
         letter-spacing: -0.02em;
         color: inherit;
+    }
+}
+.contact-enterprise {
+    padding: fluid(16px, 40px);
+    border-radius: 14px;
+    background: var(--primary-blue);
+}
+.contact-enterprise__list {
+    margin-top: fluid(24px, 40px);
+    display: flex;
+    flex-direction: column;
+    gap: fluid(18px, 20px);
+
+    li {
+        position: relative;
+        font-weight: 500;
+        font-size: fluid(16px, 18px);
+        line-height: 144%;
+        letter-spacing: -0.02em;
+        color: var(--primary-solid);
+
+        &:has(a[href="tel:*"]) {
+            &::before {
+                
+            }
+        }
     }
 }
 
