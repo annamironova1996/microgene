@@ -12,7 +12,9 @@ $fluid-max-width: 1840px !default;
     $multiplier: $max-size-num - $min-size-num;
     $range: $max-width-num - $min-width-num;
 
-    @return calc(#{$min-size} + #{$multiplier} * (min(100vw, #{$max-width}) - #{$min-width}) / #{$range});
+    @return calc(
+        #{$min-size} + #{$multiplier} * (min(100vw, #{$max-width}) - #{$min-width}) / #{$range}
+    );
 }
 @media screen and (min-width: 1024px) {
     // header
@@ -167,8 +169,8 @@ $fluid-max-width: 1840px !default;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: fluid(153px, 198px);
-    height: fluid(26px, 34px);
+    width: fluid(153px, 168px);
+    height: fluid(26px, 29px);
     flex-shrink: 0;
     margin-bottom: fluid(0px, 10px);
 
@@ -776,9 +778,9 @@ $fluid-max-width: 1840px !default;
         color: inherit;
         transition: color 0.3s ease;
 
-         &[href^="mailto:"] {
-             font-size: fluid(14px, 18px);
-         }
+        &[href^='mailto:'] {
+            font-size: fluid(14px, 18px);
+        }
 
         &:active {
             color: var(--secondary-solid);
